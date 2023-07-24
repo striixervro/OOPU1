@@ -1,0 +1,1266 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unit 1: OOP STRiiXER
+</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+a{
+	text-decoration: none;
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+#downbtn{
+ background-color: #90A4AE ;
+ color: white;
+ padding: 5px 5px 5px 5px;
+ border-radius: 5px;
+ font-size: 12px;
+ }
+</style></head><body><article id="4e2faab6-76d3-4e8a-9cf5-13260d7841ea" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/gradients_3.png" style="object-position:center 60%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="UIPYQB%204e2faab676d34e8a9cf513260d7841ea/logo.png"/></div><div><a href="UIPYQB 4e2faab676d34e8a9cf513260d7841ea\Unit 1 Introduction to OOP STRiiXER.pdf"  id="downbtn" download>Download</a></div><h1 class="page-title">                  Unit 1: Introduction to OOP </h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9f742403-d157-40cd-87c6-ee0d17a0ceee"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q1. What is the Object Oriented Programming paradigm? Compare structure and object programming.  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q1ANS">Answer</a></em></mark></span></code><mark class="highlight-blue"><em> </em></mark></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bc75a2c6-3090-410b-a86d-b5c2e456aedd"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q2. Write a program that calculates how much a $10,000 investment would be worth if it is increased in value by 20% during the first year, lost $500 in value in the second year, and increased 16% in the third year.  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q2ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ece4177e-8788-424d-995b-8a432cff0cff"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q3. Write a program with control constructs ‘for&#x27; ‘do-while’ and ‘while’ statements to compute the sum of squares of the first 20 even natural numbers.  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q3ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1966135c-f6e7-4511-a029-fb0fe42b0220"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q4. Explain various data types supported by Java. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q4ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d7bbfeb4-eb68-46d6-a0c2-1b789adc25e9"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q5. What is precedence? Explain how precedence and associativity are useful in evaluating expressions.  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q5ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="738ccd62-4560-4d2e-b111-4bc92238c1d5"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q6. Write a program that takes the numbers of hours worked by an employee and the basic hourly pay and output. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q6ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="705c813b-2197-4fc2-9e56-a8ed62323bf5"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q7. Write a program that does binary to decimal and decimal to binary conversion (Do not use predefined methods). <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q7ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="82814dea-7b0f-4ba5-ac9a-6f9dee16f3fc"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q8. Explain basic feature of Java with example 
+     a)  Inheritance c) Polymorphism<p id="a6950221-6bd0-40bf-b63f-fdfbf6d5a1a2" class="">     b) Abstraction d) Encapsulation  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q8ANS">Answer</a></em></mark></span></code></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9b44a9ac-1fae-45c3-be6d-5a44fbe9cb16"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q9. Write for, do-while and while statement to compute the following sum 4+8+12+16+....+80.  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q9ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c70f165a-a748-4dcc-a5a7-b7baf68bfcdb"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q10. Why is java known as a platform impudent language?  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q10ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="de5f7631-25c4-4697-8d94-6da6eb4102f6"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q11. Write an application program to find out the largest number among the three numbers using conditional or ternary operators.  <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q11ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="54f55112-78cf-475f-8716-2b0fdee0fccc"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q12. List out various components of the java program and explain each of them in brief. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q12ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="316dcf41-c71c-4d3d-ad67-7c478f5d87f5"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q13. Explain Basic features of Java which makes it a powerful language. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q13ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="73864620-34c2-4358-b468-241495fa2552"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q14. Explain various data types supported by Java. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q14ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5a6f0ed4-92b8-4ae5-9f24-c6d74a7d0284"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q15. Explain type conversion and casting with examples and also differentiate between them. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q15ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d323bf2b-f011-4624-bd45-6f0ed120efe2"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q16. Why is java known as a platform independent language? <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q16ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c43c424e-59c0-458b-afbe-7086fad91e0d"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q17. Explain steps for executing a Java program. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q17ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="084b5626-52ea-4d80-b130-5fc19eb6aa56"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q18.  Justify each of the following statements above java:
+i) Java is operating system independent.<p id="612fcbc1-9bb6-4aed-a6f6-b0638d1c8bfb" class="">ii) Java is safe and secure.</p><p id="33754a81-0b46-4d3a-a4a5-75839e0197b2" class="">iii) Java is small and simple. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q18ANS">Answer</a></em></mark></span></code></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e86d0c1e-9b9f-4752-aadd-9d6fc924bc3c"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q19. Write a java program to print the square of the first 20 odd numbers. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q19ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ec15da3a-0d43-404d-be9c-89bfce8964a5"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q20. Describe various types supported in java with example. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q20ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a8c12a35-ee35-4761-a880-d9e71b7c687f"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q21. Write ‘for’, ’do-while’ and ‘while’  statements to compute the following product 1 * 2 * 3 * …. * 25. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q21ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="44c44775-1d2c-48f6-ac64-af2f31362049"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q22. What is an operator? Explain about precedence and associativity of an operator. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q22ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b56bf5e2-62d5-4973-9d7e-6cd0304016da"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q23. Write a java program that calculates the sum of digits of a given number. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q23ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3d394897-3c4e-4c7c-9ede-8d7c0c644c93"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q24. Explain the steps for executing a java program. What are the sources and byte code files in java? <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q24ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="af81eada-851f-4829-93a2-75b33b4ddfd3"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q25. Differentiate between procedural language and Object oriented language. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q25ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5775851f-b961-40b4-85c3-4ef9856fb449"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q26. Write a java program that calculates the sum of the first 30 odd numbers. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q26ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d018ad7b-bf6d-42f4-9beb-c31194652a68"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q27. What is primitive data type conversion and how does it differ from casting? Explain it with an example. <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q27ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="71a2064c-2348-49d3-9d55-1fabc000c34d"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q28. What are the rules for naming an identifier in Java? <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q28ANS">Answer</a></em></mark></span></code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7f289565-74cf-431e-a1a4-72758ff4249b"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q29. Explain about:<ul id="6e05f8b1-a70e-4795-9d3b-9cca19c99065" class="bulleted-list"><li style="list-style-type:disc">Literals</li></ul><ul id="054c490c-e502-4be8-8baf-c2515eb0f339" class="bulleted-list"><li style="list-style-type:disc">Operators</li></ul><ul id="fdd49348-3513-43df-a0b4-7ab9f8605700" class="bulleted-list"><li style="list-style-type:disc">Expressions <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q29ANS">Answer</a></em></mark></span></code></li></ul></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0416973d-ce63-4231-b011-6487d049d94c"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%">Q30. Why is Java called an OOP language? <code><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><em><a href="#Q30ANS">Answer</a></em></mark></span></code></div></figure><p id="63b34d99-faf6-453d-8803-49e1be066f49" class="">
+</p><hr id="99b58a7c-2adb-459a-a2ac-89db7ba06627"/><h1 id="efde2bfc-6e3e-4cc6-90ea-14062483a937" class=""><span style="border-bottom:0.05em solid">Answers:</span></h1><p id="3b60560d-2178-42f6-8bbd-717731addc30" class="">Q1. <strong id="Q1ANS">What is the Object Oriented Programming paradigm? Compare structure and object programming.</strong></p><p id="55ef39db-caab-48f2-a7fc-5efb7bd692bb" class=""><em>Answer:</em>  Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of &quot;objects.&quot; An object is a self-contained unit that combines data (attributes) and behaviors (methods) into a single entity. OOP focuses on modeling real-world entities as objects and provides a way to structure code that is modular, reusable, and easy to maintain.</p><p id="de72a3ea-ba81-44fb-90b7-366b39ddbeb8" class=""><strong>Key Concepts of OOP</strong>:</p><p id="d71d51a1-02a8-4e63-8e99-781b413e53d4" class="">1. Classes: A class is a blueprint or a template for creating objects. It defines the attributes and methods that the objects of that class will have.</p><p id="d270b5cf-6b52-4f21-9517-5970c30be63e" class="">2. Objects: Objects are instances of a class, created based on the class blueprint. Each object has its own set of data and can perform the methods defined in the class.</p><p id="07545e6b-f625-4aa7-86c4-ca6c866e2d4e" class="">3 .Encapsulation: Encapsulation is the practice of bundling data (attributes) and the methods that operate on that data together within a class. It hides the internal implementation details and exposes only the necessary interface to interact with the object.</p><p id="76a0a8fd-abbc-4e28-ba72-c12cbb72b788" class="">4. Inheritance: Inheritance allows a class (called the subclass or derived class) to inherit properties and behaviors from another class (called the superclass or base class). This promotes code reuse and hierarchical organization.</p><p id="ab8066e4-2361-4b30-9aa5-e6907b90d488" class="">5. Polymorphism: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables the same method to be used with different types of objects, providing flexibility and extensibility.</p><p id="ef2f0b98-8d17-4288-8512-214ca76bf5f0" class="">Structure Programming vs. Object-Oriented Programming:</p><p id="41e3bda6-9027-4082-af11-9e070313b6cc" class=""><em>Structure Programming</em>:</p><ul id="2b7f4c60-c88f-4fb7-b7cc-2ad4cdb5c6ff" class="bulleted-list"><li style="list-style-type:disc">Structure programming is a procedural programming paradigm that focuses on creating procedures or routines to perform tasks.</li></ul><ul id="5493902c-4c32-4a22-8475-2294afdd4387" class="bulleted-list"><li style="list-style-type:disc">It uses functions and procedures to manipulate data, but there is no concept of objects.</li></ul><ul id="4d3857a8-329d-4140-a1e9-5f1a76674da0" class="bulleted-list"><li style="list-style-type:disc">Data and functions are separated, and data is often passed between functions explicitly.</li></ul><ul id="424a0c24-d8b2-4fc8-ac03-6ede720e132f" class="bulleted-list"><li style="list-style-type:disc">It can be less modular and harder to maintain for large-scale applications.</li></ul><p id="6a473afc-ca8f-4685-9db0-cc3efd45a1cb" class=""><em>Object-Oriented Programming</em>:</p><ul id="6d38fb12-4a35-4e4a-82f8-ed0a8a8dade2" class="bulleted-list"><li style="list-style-type:disc">OOP focuses on creating objects that encapsulate data and behavior together.</li></ul><ul id="8e943f60-6ef6-462e-a2c9-1e220f5c0b72" class="bulleted-list"><li style="list-style-type:disc">Objects communicate with each other through methods, and data is hidden within the objects, promoting data integrity.</li></ul><ul id="573d51c2-ba76-4f89-a0db-cb3935040002" class="bulleted-list"><li style="list-style-type:disc">OOP provides inheritance, allowing the creation of hierarchical relationships between classes, enhancing code reuse and organization.</li></ul><ul id="ca4a00a1-2d45-43e0-b628-47f32de31a60" class="bulleted-list"><li style="list-style-type:disc">OOP promotes the concept of polymorphism, allowing flexibility and adaptability in program design.</li></ul><p id="03aa1651-f982-4977-acf7-f01a5ea18a9a" class="">In summary, the main difference lies in the approach to code organization and design. Structure programming is centered around procedures and functions, while object-oriented programming revolves around objects and their interactions.</p><p id="e99f358d-6da4-4c5f-81f4-be0c526335aa" class="">Q2. <strong id="Q2ANS">Write a program that calculates how much a $10,000 investment would be worth if it is increased in value by 20% during the first year, lost $500 in value in the second year, and increased 16% in the third year.</strong></p><p id="83b5bd20-4eff-4db0-b4a5-177dcff1e3e1" class=""><em>Answer:</em></p><pre id="2b854374-c9d2-4b4c-8903-109173b11b94" class="code"><code>public class InvestmentCalculator {
+
+    public static double calculateInvestmentGrowth(double initialInvestment,
+ double[] growthRates) {
+        double currentValue = initialInvestment;
+
+        for (double rate : growthRates) {
+            currentValue += currentValue * rate / 100;
+        }
+
+        return currentValue;
+    }
+
+    public static void main(String[] args) {
+        double initialInvestment = 10000;
+        double[] growthRates = { 20, -5, 16 };
+        double finalValue = calculateInvestmentGrowth(initialInvestment, growthRates);
+
+        System.out.println(&quot;Initial Investment: $&quot; + initialInvestment);
+        System.out.println(&quot;Final Value: $&quot; + String.format(&quot;%.2f&quot;, finalValue));
+    }
+}</code></pre><pre id="466a80ee-f147-4c94-80c5-cf7fe66c6ffa" class="code"><code>Initial Investment: $10000.0
+Final Value: $13224.00</code></pre><p id="f9ea6529-27d4-41cb-a807-cf035adffcf1" class="">Q3. <strong id="Q3ANS">Write a program with control constructs ‘for&#x27; ‘do-while’ and ‘while’ statements to compute the sum of squares of the first 20 even natural numbers.</strong></p><pre id="66d1e157-a427-49bf-9e05-e79d2ba8daaa" class="code"><code>public class SumOfSquares {
+
+    public static void main(String[] args) {
+        // Using for loop
+        int sumForLoop = 0;
+        for (int i = 2; i &lt;= 40; i += 2) {
+            sumForLoop += i * i;
+        }
+        System.out.println(&quot;Sum of squares (using for loop): &quot; + sumForLoop);
+
+        // Using while loop
+        int sumWhileLoop = 0;
+        int numberWhileLoop = 2;
+        int countWhileLoop = 1;
+        while (countWhileLoop &lt;= 20) {
+            sumWhileLoop += numberWhileLoop * numberWhileLoop;
+            numberWhileLoop += 2;
+            countWhileLoop++;
+        }
+        System.out.println(&quot;Sum of squares (using while loop): &quot; + sumWhileLoop);
+
+        // Using do-while loop
+        int sumDoWhileLoop = 0;
+        int numberDoWhileLoop = 2;
+        int countDoWhileLoop = 1;
+        do {
+            sumDoWhileLoop += numberDoWhileLoop * numberDoWhileLoop;
+            numberDoWhileLoop += 2;
+            countDoWhileLoop++;
+        } while (countDoWhileLoop &lt;= 20);
+        System.out.println(&quot;Sum of squares (using do-while loop): &quot; + sumDoWhileLoop);
+    }
+}</code></pre><pre id="4aa2933f-ee16-4749-b687-0cabe794b6f3" class="code"><code>Sum of squares (using for loop): 26640
+Sum of squares (using while loop): 26640
+Sum of squares (using do-while loop): 26640</code></pre><p id="c7731b06-2a52-40c5-a607-b9642bf80f80" class="">
+Q4. <strong id="Q4ANS">Explain various data types supported by Java.</strong></p><p id="516e516a-a168-456e-8d55-94d9502376ed" class="">Java supports various data types that allow you to store different kinds of data in variables. The data types in Java can be categorized into two main categories: primitive data types and reference data types.</p><ol type="1" id="82de1a60-cbf5-4cc4-84d7-6995c50d85c0" class="numbered-list" start="1"><li><strong>Primitive Data Types:</strong>
+Primitive data types are the most basic data types in Java. They hold simple values and have a fixed size in memory. There are eight primitive data types in Java:<ul id="42f0cc74-6bc8-4f86-ad2a-35c555cc5775" class="bulleted-list"><li style="list-style-type:disc"><strong>byte:</strong> 8-bit signed integer. Range: -128 to 127.</li></ul><ul id="7524774a-e73d-49ac-82b6-444c6b75a53d" class="bulleted-list"><li style="list-style-type:disc"><strong>short:</strong> 16-bit signed integer. Range: -32,768 to 32,767.</li></ul><ul id="007e80b2-2f2f-4c29-95d3-a018d7d71055" class="bulleted-list"><li style="list-style-type:disc"><strong>int:</strong> 32-bit signed integer. Range: -2^31 to 2^31 - 1.</li></ul><ul id="39b9a5a6-a13a-4376-82a7-03e842dac2f6" class="bulleted-list"><li style="list-style-type:disc"><strong>long:</strong> 64-bit signed integer. Range: -2^63 to 2^63 - 1.</li></ul><p id="07038944-d8c8-44fa-bfff-eaf1923c8bf9" class="">
+</p><ul id="984ebf24-2fa3-4f97-ba26-1ba9b2ce2f02" class="bulleted-list"><li style="list-style-type:disc"><strong>float:</strong> 32-bit floating-point number. Used for decimal numbers with limited precision.</li></ul><ul id="45afd598-5976-4377-9701-40010525ab54" class="bulleted-list"><li style="list-style-type:disc"><strong>double:</strong> 64-bit floating-point number. Used for decimal numbers with higher precision.</li></ul><ul id="a0dcb792-f9fc-4b39-a1f9-ce72b89bb5f7" class="bulleted-list"><li style="list-style-type:disc"><strong>char:</strong> 16-bit Unicode character. Represents individual characters like &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, etc.</li></ul><ul id="7ecc43eb-66b2-4f6e-a4a3-2b2faa49a14f" class="bulleted-list"><li style="list-style-type:disc"><strong>boolean:</strong> Represents a true or false value.</li></ul></li></ol><ol type="1" id="576b2121-f51f-467d-ab83-a133d1ab257c" class="numbered-list" start="2"><li><strong>Reference / Non-primitive Data Types:</strong>
+Reference data types store references (memory addresses) to objects rather than the actual data. These types include classes, interfaces, arrays, and enumerations. Unlike primitive data types, they don&#x27;t store the actual data but rather point to the memory location where the data is stored.<p id="742d43ad-d894-4e44-a6b8-d38a1da695d2" class="">For example:</p><ul id="63d1560a-aa08-466f-811d-a4c054f23979" class="bulleted-list"><li style="list-style-type:disc"><strong>Objects:</strong> Objects are instances of classes, and their data types would be the class names.</li></ul><ul id="be87d560-1846-4aaa-a24f-8dce95a9ceef" class="bulleted-list"><li style="list-style-type:disc"><strong>Arrays:</strong> Arrays are a collection of elements of the same data type, and their data type is determined by the elements they contain.</li></ul><p id="03f4ba1e-27ee-44a7-a29a-ca96e29929cb" class="">Example of a reference data type:</p><pre id="848c207c-a1a4-4d2a-a813-92b4a82dddb8" class="code code-wrap"><code>String text = &quot;Hello&quot;; // Here, &quot;text&quot; is a reference variable of type String, pointing to a String object.
+</code></pre></li></ol><p id="1f523625-57cf-4fd9-ac28-5758c0f40725" class="">
+Q5. <strong id="Q5ANS">What is precedence? Explain how precedence and associativity are useful in evaluating expressions.</strong></p><p id="3cfdfc57-84d3-4287-b844-d3cde4236849" class="">In programming languages, including Java, &quot;precedence&quot; refers to the priority or order in which operators are evaluated in an expression. When an expression contains multiple operators of different types, precedence determines which operator is evaluated first and which one is evaluated later. The operator with higher precedence is evaluated before the operator with lower precedence.</p><p id="c9dc1d85-6362-41fc-a212-c66e40bb0289" class="">On the other hand, &quot;associativity&quot; determines the order in which operators of the same precedence are evaluated when they appear in a sequence. Some operators, like addition (+) and multiplication (*), are left-associative, which means they are evaluated from left to right. Others, like assignment (=), are right-associative, which means they are evaluated from right to left.</p><p id="abbbfe62-431a-4a5f-8ed0-0a256f5dd116" class="">Both precedence and associativity are important for correctly evaluating complex expressions and ensuring that the results are as expected. When evaluating expressions, the compiler follows these rules:</p><ol type="1" id="068e44fd-3afc-4ac1-acb2-13752dfd7282" class="numbered-list" start="1"><li>Precedence: Operators with higher precedence are evaluated first.</li></ol><ol type="1" id="9c51a2f9-f162-44e6-8c38-b64d3da57a38" class="numbered-list" start="2"><li>Associativity: If two operators have the same precedence, the associativity determines the order of evaluation.</li></ol><p id="4db366e7-393b-41d2-94c5-0c4ee22ba3b4" class="">Let&#x27;s look at an example to understand how precedence and associativity are used in evaluating expressions:</p><pre id="d4f71b29-6eb0-400f-8bc9-f7078a508fb0" class="code code-wrap"><code>int result = 10 + 5 * 2 - 6 / 3;</code></pre><p id="b8bd5bd9-882e-4c13-b4e6-fc4c38178ca2" class="">To evaluate this expression, we need to consider the precedence of operators:</p><ol type="1" id="ffd84e54-9080-4ac4-8c89-9bff2d5b56c6" class="numbered-list" start="1"><li>Multiplication (*) has higher precedence than addition (+) and subtraction (-).</li></ol><ol type="1" id="3e77b45d-3ae9-4466-8f46-069eb2d49195" class="numbered-list" start="2"><li>Division (/) has the same precedence as multiplication (*), so associativity comes into play.</li></ol><p id="7cd25ced-d3fb-4feb-923b-7469a0fc047a" class="">Here&#x27;s the step-by-step evaluation:</p><ol type="1" id="6fc745e6-4051-4317-8e32-964eb6693a6f" class="numbered-list" start="1"><li>5 * 2 is evaluated first (since multiplication has higher precedence than addition):
+<code>5 * 2 = 10</code>
+So the expression becomes: <code>10 + 10 - 6 / 3</code></li></ol><ol type="1" id="7fa01ee6-63ae-4b71-8b64-39dd2b996622" class="numbered-list" start="2"><li>6 / 3 is evaluated next (since division has the same precedence as multiplication, left-associativity applies):
+<code>6 / 3 = 2</code>
+So the expression becomes: <code>10 + 10 - 2</code></li></ol><ol type="1" id="e9d9f0f1-7ae5-4f3b-9553-4c2bd10db499" class="numbered-list" start="3"><li>Finally, addition and subtraction are evaluated (left to right, as they have the same precedence):
+<code>10 + 10 = 20</code><code>20 - 2 = 18</code></li></ol><p id="d6ebe4e8-df93-4f04-abca-075597cd6b2c" class="">The final value of <code>result</code> will be <code>18</code>.</p><p id="d5f064ea-4b0c-4273-9610-a1739e878439" class="">Without precedence and associativity rules, expressions would be ambiguous, and we would get different results depending on how the compiler interprets them. By following these rules, we ensure that expressions are evaluated in a consistent and deterministic manner, making our code more reliable and easier to understand.</p><p id="3c3dbbfe-b001-4248-8041-15a016042eb2" class="">Q6.<strong id="Q6ANS"> Write a program that takes the numbers of hours worked by an employee and the basic hourly pay and output.</strong></p><pre id="aaad0d52-c4ed-44ea-8e61-1d36bfe1a7fe" class="code code-wrap"><code>import java.util.Scanner;
+
+public class PayCalculator {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print(&quot;Enter the number of hours worked: &quot;);
+    double hoursWorked = scanner.nextDouble();
+
+    System.out.print(&quot;Enter the basic hourly pay: &quot;);
+    double hourlyPay = scanner.nextDouble();
+
+    scanner.close();
+
+    double totalPay = hoursWorked * hourlyPay;
+    System.out.println(&quot;Total pay: $&quot; + totalPay);
+}
+}</code></pre><p id="3356b2df-1f45-43f5-ad39-e4d56f5af7e4" class="">In this program, we use the <code><strong>Scanner</strong></code> class to read input from the user. The user is prompted to enter the number of hours worked and the basic hourly pay. The program then calculates the total pay by multiplying the number of hours worked by the hourly pay and outputs the result.</p><p id="4683bb0d-221a-4827-b0a3-0d224afbafaa" class="">For example, if the user enters <code><strong>40</strong></code> hours worked and an hourly pay of <code><strong>15</strong></code>, the program will output:</p><pre id="6dba9549-a033-4c0e-ba78-0fd9dafa4b86" class="code"><code>Enter the number of hours worked: 40
+Enter the basic hourly pay: 15
+Total pay: $600.0</code></pre><p id="3285f857-d158-4682-a5aa-e8cda1e4293a" class="">Q7. <strong id="Q7ANS">Write a program that does binary to decimal and decimal to binary conversion (Do not use predefined methods).</strong></p><pre id="dbb7259a-6313-4069-a3cb-cf15fa9e4a37" class="code code-wrap"><code>import java.util.Scanner;
+
+public class NumberConverter {
+
+    // Convert binary to decimal
+    public static int binaryToDecimal(String binary) {
+        int decimal = 0;
+        int base = 1;
+
+        for (int i = binary.length() - 1; i &gt;= 0; i--) {
+            if (binary.charAt(i) == &#x27;1&#x27;) {
+                decimal += base;
+            }
+            base *= 2;
+        }
+
+        return decimal;
+    }
+
+    // Convert decimal to binary
+    public static String decimalToBinary(int decimal) {
+        StringBuilder binary = new StringBuilder();
+
+        while (decimal &gt; 0) {
+            int remainder = decimal % 2;
+            binary.insert(0, remainder);
+            decimal /= 2;
+        }
+
+        return binary.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;Choose conversion:&quot;);
+        System.out.println(&quot;1. Binary to Decimal&quot;);
+        System.out.println(&quot;2. Decimal to Binary&quot;);
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.print(&quot;Enter a binary number: &quot;);
+                String binaryInput = scanner.nextLine();
+                int decimalResult = binaryToDecimal(binaryInput);
+                System.out.println(&quot;Decimal equivalent: &quot; + decimalResult);
+                break;
+            case 2:
+                System.out.print(&quot;Enter a decimal number: &quot;);
+                int decimalInput = scanner.nextInt();
+                scanner.nextLine();
+                String binaryResult = decimalToBinary(decimalInput);
+                System.out.println(&quot;Binary equivalent: &quot; + binaryResult);
+                break;
+            default:
+                System.out.println(&quot;Invalid choice!&quot;);
+        }
+
+        scanner.close();
+    }
+}</code></pre><p id="49e25c75-169d-4a21-80ca-3c674fd05328" class=""><strong>Output for Binary to Decimal Conversion:</strong></p><pre id="df25d14e-8c88-47e8-8249-039b521c64e1" class="code code-wrap"><code>Choose conversion:
+1. Binary to Decimal
+2. Decimal to Binary
+1
+Enter a binary number: 1101
+Decimal equivalent: 13</code></pre><p id="0ab3edef-dca7-4611-8455-fe321ab049dd" class="">In this example, we chose the conversion from binary to decimal. The binary number <code>1101</code> is converted to its decimal equivalent, which is <code>13</code>.</p><p id="ec912741-4952-4bb3-817c-65f1854b652b" class=""><strong>Output for Decimal to Binary Conversion:</strong></p><pre id="57f7de90-611c-4103-9108-f5d899b190ad" class="code code-wrap"><code>Choose conversion:
+1. Binary to Decimal
+2. Decimal to Binary
+2
+Enter a decimal number: 25
+Binary equivalent: 11001</code></pre><p id="3064b199-04c6-4db6-8c2a-27322db2a2d6" class="">In this example, we chose the conversion from decimal to binary. The decimal number <code>25</code> is converted to its binary representation, which is <code>11001</code>.</p><p id="a904ef6f-009b-45c7-8a7b-5e341b39369c" class="">Q8.<strong id="Q8ANS"> Explain basic feature of Java with example</strong></p><p id="b6bc5b22-d9a3-4ecb-a3df-3d51694639c1" class=""><strong>a)Inheritance c) Polymorphism</strong></p><p id="fc909c1c-5621-45cd-a1d8-508a8c1e9107" class=""><strong>b)Abstraction d) Encapsulation</strong></p><p id="89cf4d1b-1613-4cd5-91a5-f3da94345d09" class=""><em>Answer:</em> a) <strong>Inheritance:</strong>
+Inheritance is a fundamental concept in object-oriented programming that allows a class (subclass) to inherit properties and behaviors from another class (superclass). The subclass can extend the functionality of the superclass by adding its own attributes and methods. This allows for code reuse and enables creating a hierarchical relationship between classes.</p><p id="ce4bdf09-f108-4e54-bec3-533aadb54f2e" class=""><strong>Example:</strong></p><pre id="925fe8fc-491d-45ef-9eb7-a6acdb21f0ec" class="code code-wrap"><code>// Superclass
+class Vehicle {
+    String brand;
+
+    void honk() {
+        System.out.println(&quot;Beep beep!&quot;);
+    }
+}
+
+// Subclass
+class Car extends Vehicle {
+    int numOfDoors;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.brand = &quot;Toyota&quot;;
+        myCar.numOfDoors = 4;
+        myCar.honk(); // Output: &quot;Beep beep!&quot;
+    }
+}</code></pre><p id="db822ff6-3ec6-46a0-b8d9-f84d6bd392ad" class=""><strong>Output:</strong></p><pre id="0278daf0-bb2a-4963-ac60-71114c663c40" class="code code-wrap"><code>Beep beep!</code></pre><p id="ed996d56-fedf-48d1-bf35-f5b7af7cb16a" class=""><strong>Explanation:</strong>
+In the example, we have two classes: <code>Vehicle</code> and <code>Car</code>. The <code>Car</code> class is a subclass of the <code>Vehicle</code> class, and it inherits the <code>brand</code> property and the <code>honk()</code> method from the <code>Vehicle</code> class. When we create an object of the <code>Car</code> class (<code>myCar</code>) and access the <code>brand</code> property and call the <code>honk()</code> method, it works as expected, printing &quot;Beep beep!&quot;. This demonstrates how the subclass <code>Car</code> inherits the functionality of the superclass <code>Vehicle</code>.</p><p id="567e59d5-e4f3-40e7-a42a-4978288275f4" class="">b) <strong>Abstraction:</strong>
+Abstraction allows you to define the structure of a class and its methods without specifying the implementation details. It focuses on what an object does rather than how it does it.</p><p id="0d4c85b3-8115-4f13-937d-163285a3ed11" class=""><strong>Example:</strong></p><pre id="c0600f18-ee08-4877-b7b7-c58b452a69a1" class="code code-wrap"><code>// Abstract class
+abstract class Shape {
+    abstract void draw();
+}
+
+// Concrete classes
+class Circle extends Shape {
+    void draw() {
+        System.out.println(&quot;Drawing a circle.&quot;);
+    }
+}
+
+class Rectangle extends Shape {
+    void draw() {
+        System.out.println(&quot;Drawing a rectangle.&quot;);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle();
+        Shape rectangle = new Rectangle();
+        circle.draw(); // Output: &quot;Drawing a circle.&quot;
+        rectangle.draw(); // Output: &quot;Drawing a rectangle.&quot;
+    }
+}</code></pre><p id="d9176b2c-f3e1-4d6f-971f-230cc788a64b" class=""><strong>Output:</strong></p><pre id="55a3bec5-eb6f-4bc0-82c1-9caf1c945c34" class="code code-wrap"><code>Drawing a circle.
+Drawing a rectangle.</code></pre><p id="88d2a04a-d5f9-439c-bc23-d7db4f013401" class=""><strong>Explanation:</strong>
+In the example, we have an abstract class <code>Shape</code> with an abstract method <code>draw()</code>. The <code>Shape</code> class provides the structure for drawing a shape, but it doesn&#x27;t specify the exact implementation for drawing. Two concrete classes, <code>Circle</code> and <code>Rectangle</code>, extend the abstract class and provide their implementations of the <code>draw()</code> method. When we create objects of these concrete classes and call the <code>draw()</code> method, it prints the specific messages for drawing a circle and a rectangle. This demonstrates how abstraction allows us to define common behavior at a higher level (in the <code>Shape</code> class) while leaving the specific details to the subclasses (<code>Circle</code> and <code>Rectangle</code>).</p><p id="4d0cd2d0-b09a-481a-86d8-c7343dc839b0" class="">c) <strong>Polymorphism:</strong>
+Polymorphism in Java allows an object to take on multiple forms. It is achieved through method overloading and method overriding.</p><p id="bf2dde41-f230-44f8-8899-ab5aafda729c" class=""><strong>Example:</strong></p><pre id="14ac04a4-f395-40f1-8203-92ac496fb8e2" class="code code-wrap"><code>class MathOperations {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+        int sumOfIntegers = math.add(5, 10);
+        double sumOfDoubles = math.add(2.5, 3.7);
+        System.out.println(&quot;Sum of integers: &quot; + sumOfIntegers); // Output: Sum of integers: 15
+        System.out.println(&quot;Sum of doubles: &quot; + sumOfDoubles); // Output: Sum of doubles: 6.2
+    }
+}</code></pre><p id="a23cdfe2-db4b-45e8-9fae-e1afeef8d68e" class=""><strong>Output:</strong></p><pre id="bcd4f77e-c583-459b-b227-fddf9d6b2d6f" class="code code-wrap"><code>Sum of integers: 15
+Sum of doubles: 6.2</code></pre><p id="26e35972-ae5f-49fe-b82f-bd94fab7bcae" class=""><strong>Explanation:</strong>
+In the example, we have a class <code>MathOperations</code> with two overloaded <code>add</code> methods: one for integers and another for doubles. The method <code>add(int a, int b)</code> takes two integer arguments and returns their sum as an integer, while <code>add(double a, double b)</code> takes two double arguments and returns their sum as a double. When we call the <code>add</code> method with integer arguments, the first version of the method is executed, and when we call it with double arguments, the second version is executed. This is an example of polymorphism through method overloading.</p><p id="9dd4d27c-e430-47ff-8ca6-8aff87c74c4c" class="">d) <strong>Encapsulation:</strong>
+Encapsulation is the process of hiding the internal details of an object and exposing only the necessary functionality through methods. It is achieved by making the fields (data members) of a class private and providing getter and setter methods to access and modify those fields.</p><p id="7bfd3aaa-84ec-4c0a-acb3-d3bb0d2d5fb9" class=""><strong>Example:</strong></p><pre id="564585c0-0fce-4a9e-b75e-f3ea238f85f0" class="code code-wrap"><code>class Student {
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if (age &gt; 0) {
+            this.age = age;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.setName(&quot;John Doe&quot;);
+        student.setAge(20);
+
+        System.out.println(&quot;Name: &quot; + student.getName()); // Output: Name: John Doe
+        System.out.println(&quot;Age: &quot; + student.getAge());   // Output: Age: 20
+    }
+}
+</code></pre><p id="e7d4262e-e2a4-41da-837b-6ae511208ddd" class=""><strong>Output:</strong></p><pre id="a456323e-741a-42fc-95aa-95971e214aac" class="code code-wrap"><code>Name: John Doe
+Age: 20
+</code></pre><p id="9dd4e67e-ad0a-40fd-bb79-b36a694c3793" class=""><strong>Explanation:</strong>
+In the example, we have a class <code>Student</code> with private fields <code>name</code> and <code>age</code>. The access to these fields is controlled through getter and setter methods (<code>getName()</code>, <code>setName()</code>, <code>getAge()</code>, <code>setAge()</code>). The <code>setName</code> method allows us to set the name of the student, while the <code>setAge</code> method ensures that the age is a valid positive number before setting it. The data (name and age) is encapsulated and can be accessed and modified only through the public getter and setter methods, providing control over data access and modification.</p><p id="66e2e633-25c6-4a36-ada3-95261460f8ca" class="">Q9. <strong id="Q9ANS">Write for, do-while and while statement to compute the following sum 4+8+12+16+....+80.</strong></p><ol type="1" id="30fb6264-e140-415c-bbf1-5c4748265d3f" class="numbered-list" start="1"><li><strong>Using for loop:</strong></li></ol><pre id="984304bb-7fd3-48bf-8278-994901dee2be" class="code code-wrap"><code>public class ForLoopExample {
+    public static void main(String[] args) {
+        int sum = 0;
+
+        for (int i = 4; i &lt;= 80; i += 4) {
+            sum += i;
+        }
+
+        System.out.println(&quot;Sum using for loop: &quot; + sum);
+    }
+}</code></pre><p id="e409bdb1-ab52-468c-b6d9-3894846a34d5" class=""> 2.  <strong>Using do-while loop:</strong></p><pre id="01482b20-b1a9-473e-b7bf-ea59de9b33cc" class="code code-wrap"><code>public class DoWhileLoopExample {
+    public static void main(String[] args) {
+        int sum = 0;
+        int i = 4;
+
+        do {
+            sum += i;
+            i += 4;
+        } while (i &lt;= 80);
+
+        System.out.println(&quot;Sum using do-while loop: &quot; + sum);
+    }
+}</code></pre><ol type="1" id="fd441fd1-f7cc-4091-abdf-f0ebe65f8671" class="numbered-list" start="3"><li><strong>Using while loop:</strong></li></ol><pre id="9b41d7c5-3404-47f8-bd44-a747e0f1bb57" class="code code-wrap"><code>public class WhileLoopExample {
+    public static void main(String[] args) {
+        int sum = 0;
+        int i = 4;
+
+        while (i &lt;= 80) {
+            sum += i;
+            i += 4;
+        }
+
+        System.out.println(&quot;Sum using while loop: &quot; + sum);
+    }
+}</code></pre><p id="428d19a6-5a78-4092-961c-f5d592b83d54" class="">All three programs will produce the same output:</p><pre id="6a987a80-50ec-411d-8270-e111543397af" class="code code-wrap"><code>Sum using for loop: 1100
+Sum using do-while loop: 1100
+Sum using while loop: 1100</code></pre><p id="ac76d74c-f84e-4536-b141-87090049592f" class="">In all the examples, we start with an initial value of <code>sum</code> as 0, and then we use the respective loop to iterate over the numbers from 4 to 80 (inclusive) with a step of 4. In each iteration, we add the current value of <code>i</code> to the <code>sum</code>. Finally, we print the computed sum.</p><p id="812613c8-dfc7-446d-8b97-cb91adf0b783" class="">Q10.<strong id="Q10ANS"> Why is java known as a platform impudent language?</strong></p><p id="25377ffe-d1eb-4987-9ca4-50dcfe9c703a" class=""><em>Answer: </em>Java is known as a platform-independent language because of its &quot;Write Once, Run Anywhere&quot; (WORA) capability. This means that Java code written on one platform (such as Windows) can be executed on any other platform (such as macOS or Linux) without modification. This platform independence is achieved through the following mechanisms:</p><ol type="1" id="2cddd134-015a-4842-9961-c76c2d896f85" class="numbered-list" start="1"><li><strong>Java Virtual Machine (JVM):</strong> Java source code is compiled into an intermediate form called bytecode. Instead of directly compiling to machine code specific to a particular operating system, the Java compiler generates bytecode that is platform-neutral. When you run a Java program, the JVM interprets and executes this bytecode on the host machine, making it platform-independent.</li></ol><ol type="1" id="f92421ad-8d64-41d1-a76a-fcabf8676272" class="numbered-list" start="2"><li><strong>Bytecode Execution:</strong> The JVM acts as an interpreter that executes the bytecode, making the Java program independent of the underlying hardware architecture and operating system.</li></ol><ol type="1" id="afd10f65-f1d6-4c29-a8d2-0b84d533519e" class="numbered-list" start="3"><li><strong>Standard Library (Java API):</strong> Java provides a rich set of standard libraries (Java API) that abstract away the underlying platform-specific details. By relying on the Java API, developers can perform various operations, such as file handling, network communication, and user interface interactions, without having to worry about the platform-specific implementation.</li></ol><ol type="1" id="28303ceb-dc7c-42c3-b3da-753dff0b93a6" class="numbered-list" start="4"><li><strong>Platform-Neutral Features:</strong> Java enforces platform-neutrality by restricting certain features that could lead to platform-specific behavior. For example, Java does not provide direct access to memory addresses or support platform-specific data types.</li></ol><p id="d0b0f5f2-fda0-422e-9f02-847097a86603" class="">Because of these features, Java code can be written and compiled on one platform, such as a Windows machine, and then executed on any other platform, such as macOS, Linux, or various other devices, including mobile phones and embedded systems, as long as the platform has a compatible JVM implementation.</p><p id="2b741371-5e44-4cff-8cb2-7d5fc193535b" class="">The platform independence of Java has been a significant factor in its popularity, as it allows developers to create applications that can be deployed across diverse environments without the need for recompilation or major code modifications.</p><p id="9cade0b1-c7e8-4622-803c-534becf9888d" class="">Q11. <strong id="Q11ANS">Write an application program to find out the largest number among the three numbers using conditional or ternary operators.</strong></p><pre id="67d7fbeb-a0a4-42fb-8f84-d7e384313476" class="code code-wrap"><code>import java.util.Scanner;
+
+public class LargestNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print(&quot;Enter the first number: &quot;);
+        int num1 = input.nextInt();
+
+        System.out.print(&quot;Enter the second number: &quot;);
+        int num2 = input.nextInt();
+
+        System.out.print(&quot;Enter the third number: &quot;);
+        int num3 = input.nextInt();
+
+        // Using ternary operator to find the largest number
+        int largest = (num1 &gt; num2) ? ((num1 &gt; num3) ? num1 : num3) : ((num2 &gt; num3) ? num2 : num3);
+
+        System.out.println(&quot;The largest number is: &quot; + largest);
+    }
+}</code></pre><p id="33181f2c-b74a-402f-a770-df8c10f23793" class="">Example Output:</p><pre id="7b5964c3-1932-4052-b065-ad4f3aaced54" class="code code-wrap"><code>Enter the first number: 15
+Enter the second number: 27
+Enter the third number: 12
+The largest number is: 27</code></pre><p id="b56c094e-19ef-4f63-a069-5e94fe7ad088" class="">Explanation:
+In this program, we take three numbers as input from the user using the <code>Scanner</code> class. We then use the conditional (ternary) operator to find the largest number among the three numbers. The syntax of the ternary operator is <code>(condition) ? expression1 : expression2</code>. If the condition is true, it evaluates <code>expression1</code>; otherwise, it evaluates <code>expression2</code>.</p><p id="833ecbc5-228f-4333-95b9-fc201fadc311" class="">In this case, we use nested ternary operators to find the largest number. The condition <code>(num1 &gt; num2)</code> checks if <code>num1</code> is greater than <code>num2</code>. If true, it further checks <code>(num1 &gt; num3)</code>, and if true, <code>num1</code> is the largest number. Otherwise, if <code>num1 &gt; num2</code> is false, it means <code>num2</code> is greater than or equal to <code>num1</code>. In that case, it checks if <code>num2 &gt; num3</code>, and if true, <code>num2</code> is the largest number. If <code>num2 &gt; num3</code> is false, it means <code>num3</code> is greater than or equal to <code>num2</code>, and <code>num3</code> is the largest number. The largest number is then stored in the variable <code>largest</code> and displayed as the output.</p><p id="6febc719-5355-41a1-b336-97a2ea22147f" class="">Q12. <strong id="Q12ANS">List out various components of the java program and explain each of them in brief.</strong></p><p id="c49bfecd-336b-4ce8-babf-4d8e562cd61a" class="">A Java program consists of several components that work together to define its structure and behavior. Here are the main components of a Java program and a brief explanation of each:</p><ol type="1" id="9518e91d-eeb8-4290-a5c2-5faf1415a4cf" class="numbered-list" start="1"><li><strong>Package:</strong>
+A package is a mechanism to organize classes and interfaces into logical groups. It helps in avoiding naming conflicts and provides better code organization and reusability. Packages are declared at the beginning of a Java file using the <code>package</code> keyword.</li></ol><ol type="1" id="f7dc3795-cea5-45db-ad2e-eceae8899c8a" class="numbered-list" start="2"><li><strong>Import Statements:</strong>
+Import statements allow you to bring classes or entire packages into scope, making them accessible without using the fully qualified name. It helps in reducing the verbosity of code when using classes from other packages.</li></ol><ol type="1" id="4bdf125e-b685-42c6-95ac-4828d8be72a1" class="numbered-list" start="3"><li><strong>Class Declaration:</strong>
+A class is a blueprint for creating objects. It contains the properties (fields) and behaviors (methods) that define the objects&#x27; characteristics. A Java program must have at least one class with a <code>main</code> method, where the program execution starts.</li></ol><ol type="1" id="858066af-ebdc-4db0-9fc1-99c61c91ae7b" class="numbered-list" start="4"><li><strong>Access Modifiers:</strong>
+Access modifiers control the visibility of classes, methods, and fields. There are four access modifiers in Java: <code>public</code>, <code>protected</code>, <code>private</code>, and the default (package-private). They determine which parts of the program can access the declared components.</li></ol><ol type="1" id="b58cf8c7-63c1-45ff-a7f6-dec79ac87afc" class="numbered-list" start="5"><li><strong>Main Method:</strong>
+The <code>main</code> method is the entry point of a Java program. It has the signature <code>public static void main(String[] args)</code>, where <code>args</code> is an array of command-line arguments passed to the program. The execution of the program starts from the <code>main</code> method.</li></ol><ol type="1" id="c9717abf-1fea-4c1e-a1db-00de828be474" class="numbered-list" start="6"><li><strong>Variables:</strong>
+Variables are used to store data in a program. They have a data type (e.g., int, double, String) and a name. Variables can be local to methods, instance variables within a class, or static variables shared across all instances of a class.</li></ol><ol type="1" id="67b24bd1-1822-401c-af6d-4f074ffda2cc" class="numbered-list" start="7"><li><strong>Methods:</strong>
+Methods are blocks of code that perform specific tasks. They define the behavior of the objects created from the class. Methods can have parameters (input values) and return values.</li></ol><ol type="1" id="633c9533-6279-4d1d-ba94-cea6e0fdcfc5" class="numbered-list" start="8"><li><strong>Statements and Expressions:</strong>
+Statements are executable code lines that perform actions or control the flow of the program. Expressions are combinations of variables, constants, and operators that produce a single value.</li></ol><ol type="1" id="acb16bc6-1dbd-4827-8596-c5f39d473d97" class="numbered-list" start="9"><li><strong>Comments:</strong>
+Comments are non-executable lines used for documentation. They provide explanations about the code to improve code readability and understanding. In Java, comments are of two types: single-line comments (<code>//</code>) and multi-line comments (<code>/* ... */</code>).</li></ol><ol type="1" id="08787943-5b6c-4d92-b6d6-a19bcea6acec" class="numbered-list" start="10"><li><strong>Constructors:</strong>
+Constructors are special methods used to initialize objects when they are created. They have the same name as the class and are called automatically when an object is instantiated.</li></ol><ol type="1" id="5c91d205-7e38-401c-828e-cbb2a62f8c1f" class="numbered-list" start="11"><li><strong>Inheritance and Interfaces:</strong>
+Inheritance allows a class (subclass) to inherit properties and behaviors from another class (superclass). Interfaces define a contract for implementing classes, specifying a set of methods that must be provided by the implementing classes.</li></ol><ol type="1" id="32d3bcb0-5157-4c2d-987d-a1d76e898f7e" class="numbered-list" start="12"><li><strong>Exception Handling:</strong>
+Exception handling is a mechanism to handle runtime errors and abnormal situations gracefully. It involves the use of <code>try</code>, <code>catch</code>, <code>finally</code>, and <code>throw</code> blocks to handle and propagate exceptions.</li></ol><p id="b362149a-75fc-4999-9176-4a9985112b15" class="">These components together form the structure of a Java program and enable the development of robust, modular, and maintainable software.</p><p id="78c408c0-43b9-4f18-91b7-4460673b7744" class="">Q13. <strong id="Q13ANS">Explain Basic features of Java which makes it a powerful language.
+</strong><em><strong>Answer: </strong></em>Java is a powerful and widely used programming language known for its portability, versatility, and rich ecosystem. Several key features contribute to Java&#x27;s power and popularity. Here are some of the basic features that make Java a powerful language:</p><ol type="1" id="4797e85e-47ce-4945-8fd7-c777e5c6dccd" class="numbered-list" start="1"><li><strong>Platform Independence (Write Once, Run Anywhere - WORA):</strong>
+Java&#x27;s platform independence is achieved through the use of the Java Virtual Machine (JVM), which interprets Java bytecode and executes it on any platform. Java code is compiled into an intermediate form called bytecode, which can be run on any system with a compatible JVM, making Java programs truly portable and platform-independent.</li></ol><ol type="1" id="644a44e7-97de-4feb-bdbe-aa727352b86a" class="numbered-list" start="2"><li><strong>Object-Oriented Programming (OOP) Support:</strong>
+Java is designed based on the principles of Object-Oriented Programming (OOP). It provides essential OOP features such as classes, objects, inheritance, encapsulation, and polymorphism. OOP allows developers to create modular, reusable, and maintainable code, promoting code organization and design.</li></ol><ol type="1" id="b133b88a-ee76-499a-b4fa-f4aea3c40791" class="numbered-list" start="3"><li><strong>Robustness and Safety:</strong>
+Java has built-in features that enhance robustness and safety, such as strong type checking, exception handling, and memory management (garbage collection). These features help prevent common programming errors, improve code reliability, and reduce the risk of system crashes and vulnerabilities.</li></ol><ol type="1" id="82053584-2923-403a-9dcc-5df238c63d0f" class="numbered-list" start="4"><li><strong>Automatic Memory Management (Garbage Collection):</strong>
+Java&#x27;s automatic memory management, known as garbage collection, takes care of deallocating memory for objects that are no longer in use. This feature relieves developers from manual memory management, reducing the risk of memory leaks and making Java programs more reliable.</li></ol><ol type="1" id="25928ec8-9f86-4321-a3af-7731046f3be6" class="numbered-list" start="5"><li><strong>Rich Standard Library (Java API):</strong>
+Java comes with a comprehensive standard library known as the Java API (Application Programming Interface). The Java API provides a vast collection of classes and methods that cover various functionalities like I/O, networking, threading, data structures, and more. This extensive library saves development time and effort by providing ready-to-use components.</li></ol><ol type="1" id="c38c7fc0-32a5-4685-91da-980fa94256b2" class="numbered-list" start="6"><li><strong>Multi-threading and Concurrency Support:</strong>
+Java provides robust support for multi-threading and concurrency, allowing developers to create multithreaded applications easily. Java&#x27;s <code>Thread</code> class and concurrent utilities enable parallel execution, making it suitable for scalable and performance-intensive applications.</li></ol><ol type="1" id="2dab0a70-e9dc-46a5-b06e-fdb4368a31eb" class="numbered-list" start="7"><li><strong>Networking Capabilities:</strong>
+Java&#x27;s networking capabilities enable developers to create networked applications effortlessly. The Java API includes classes for TCP/IP and UDP networking, which are essential for building client-server applications and distributed systems.</li></ol><ol type="1" id="413082af-cb90-4dc8-a98f-bcfa415ed082" class="numbered-list" start="8"><li><strong>Security:</strong>
+Java has built-in security features to protect against malicious code and unauthorized access. Java&#x27;s security model includes a class loader that isolates running Java code from the underlying operating system, ensuring safe execution in a sandbox environment.</li></ol><ol type="1" id="834ca515-bf41-45bd-b44e-67165f38a5e4" class="numbered-list" start="9"><li><strong>Community and Ecosystem:</strong>
+Java has a vast and active community of developers, which results in an extensive ecosystem of libraries, frameworks, and tools. This vibrant ecosystem offers solutions for various domains, including web development, enterprise applications, mobile development, big data, and more.</li></ol><p id="eb974e87-f283-4fac-9171-3468dfcc8def" class="">These powerful features have made Java one of the most widely used and preferred programming languages for a wide range of applications, from desktop and web applications to mobile and enterprise solutions. Its portability, reliability, and scalability have contributed to its continued popularity in the software development industry.</p><p id="d67705ef-71d5-4841-b83b-97c9a3e22cab" class="">Q14. <strong id="Q14ANS">Explain various data types supported by Java.
+ </strong><em><strong>Answer:</strong></em><strong> </strong>Java supports two categories of data types: primitive data types and reference data types.</p><ol type="1" id="c7d67c84-e0f1-4a88-a50a-68379234b70e" class="numbered-list" start="1"><li><strong>Primitive Data Types:</strong>
+Primitive data types are the basic data types provided by Java and are used to store simple values. Java has eight primitive data types, which can be categorized into four numeric types, one character type, one boolean type, and the <code>void</code> type (used for methods that do not return a value).<p id="65bb95b3-8a0b-4406-a80d-be75b587dc70" class="">a) <strong>Numeric Types:</strong></p><ul id="b30a838a-3d69-4afd-a39b-d49d4c4df99a" class="bulleted-list"><li style="list-style-type:disc"><code>byte</code>: 8-bit signed integer. Range: -128 to 127.</li></ul><ul id="bb55134a-5e24-483a-afe9-aa7631b8f232" class="bulleted-list"><li style="list-style-type:disc"><code>short</code>: 16-bit signed integer. Range: -32,768 to 32,767.</li></ul><ul id="336f7f60-e3af-49e4-83c0-8bbd132b5696" class="bulleted-list"><li style="list-style-type:disc"><code>int</code>: 32-bit signed integer. Range: -2^31 to 2^31 - 1.</li></ul><ul id="564b67ff-0d70-4a35-be28-bdec22132efa" class="bulleted-list"><li style="list-style-type:disc"><code>long</code>: 64-bit signed integer. Range: -2^63 to 2^63 - 1.</li></ul><p id="1a61af28-aecd-4a2a-88e7-849a704d8dbb" class="">b) <strong>Floating-Point Types:</strong></p><ul id="1e6e20d1-a1b0-4241-8f64-9cfe3a61e7bd" class="bulleted-list"><li style="list-style-type:disc"><code>float</code>: 32-bit single-precision floating-point. Range: approximately ±3.40282347E+38F with 7 significant digits.</li></ul><ul id="699be22a-7ff7-4f42-943b-45fe3b08d330" class="bulleted-list"><li style="list-style-type:disc"><code>double</code>: 64-bit double-precision floating-point. Range: approximately ±1.79769313486231570E+308 with 15 significant digits.</li></ul><p id="78dffefe-23f9-4185-9fba-20559c3c7b47" class="">c) <strong>Character Type:</strong></p><ul id="53d78d75-c412-40b5-b2aa-f1a758cd76fc" class="bulleted-list"><li style="list-style-type:disc"><code>char</code>: 16-bit Unicode character. Represents single characters and uses single quotes, e.g., &#x27;A&#x27;, &#x27;b&#x27;, &#x27;1&#x27;.</li></ul><p id="162d34cc-377a-46db-b450-3e249df6298b" class="">d) <strong>Boolean Type:</strong></p><ul id="152ae29d-f935-45b9-b48a-a076e9c0ed6e" class="bulleted-list"><li style="list-style-type:disc"><code>boolean</code>: Represents a true/false value. Possible values are <code>true</code> or <code>false</code>.</li></ul></li></ol><ol type="1" id="aa2405c6-fd4f-4d41-811b-8525bc791ef8" class="numbered-list" start="2"><li><strong>Reference Data Types:</strong>
+Reference data types are used to refer to objects created using classes or interfaces. Unlike primitive data types, which store the actual data, reference data types store references (memory addresses) to the objects in memory.<p id="f9a46225-8636-4eae-b7eb-9de32d995dd9" class="">Examples of reference data types are:</p><ul id="503b4947-b3ce-4b6d-925f-a90991ef01d0" class="bulleted-list"><li style="list-style-type:disc"><code>String</code>: Represents a sequence of characters.</li></ul><ul id="25d50cbf-dae8-4c2b-a6c8-5d04822399d7" class="bulleted-list"><li style="list-style-type:disc">Arrays: Collections of elements of the same type.</li></ul><ul id="7e07f9de-a9ce-4e00-8f87-441c39a51bbc" class="bulleted-list"><li style="list-style-type:disc">Custom Classes: Objects created using class definitions.</li></ul><p id="9014efd8-2820-4d30-9fb2-c1e2da927cfc" class="">Unlike primitive data types, reference data types are not stored directly in memory but reference the memory locations where the actual data is stored.</p></li></ol><p id="b57f6bed-7e87-4d20-b6f6-7249e00948ac" class="">Java also allows developers to create their own custom data types using classes and interfaces, enabling the creation of complex data structures and encapsulation of data and behavior within objects.</p><p id="ee5acfd3-5b87-4161-806c-b534f3e80570" class="">It&#x27;s important to note that Java is a statically typed language, which means that variable types must be explicitly declared before using them. The choice of data types depends on the specific requirements of the program and the range and precision of values that need to be stored or manipulated.</p><p id="e11a8cb3-3104-4546-8783-7c8a1c9a6cf6" class="">Q15. <strong id="Q15ANS">Explain type conversion and casting with examples and also differentiate between them.
+</strong><em><strong>Answer: </strong></em></p><p id="70f6bc18-63c6-4499-9baa-3901153d5273" class=""><strong>Type Conversion:</strong>
+Type conversion, also known as type casting or type coercion, refers to the process of converting a value from one data type to another. In Java, type conversion can be performed implicitly (automatic) by the compiler when it is safe and explicit (manual) by the programmer when the conversion might result in data loss or potential errors.</p><p id="4be5a60b-6dbd-4faf-ab15-12d5eb18193a" class=""><strong>Example of Implicit Type Conversion:</strong></p><pre id="36ad6e5f-7a06-435b-9b79-b9de6e206604" class="code code-wrap"><code>int intValue = 10;
+double doubleValue = intValue; // Implicit type conversion from int to double
+System.out.println(doubleValue); // Output: 10.0</code></pre><p id="8f77a235-f8d4-43c6-a987-9f39c2864558" class=""><strong>Example of Explicit Type Conversion (Casting):</strong></p><pre id="f84770e0-e82f-44e9-a067-047ee681d8e8" class="code code-wrap"><code>double doubleValue = 10.5;
+int intValue = (int) doubleValue; // Explicit type conversion (casting) from double to int
+System.out.println(intValue); // Output: 10</code></pre><p id="d515c695-1143-4ac2-844b-96ae83f97cd3" class=""><strong>Differentiation between Type Conversion and Casting:</strong></p><ol type="1" id="008cd46c-ba53-49f1-a8ef-dcb27f9d218e" class="numbered-list" start="1"><li><strong>Nature:</strong><ul id="5470440a-c156-4fd4-8bff-38c474b15dd0" class="bulleted-list"><li style="list-style-type:disc">Type Conversion: It is the general process of converting one data type to another, which can be done implicitly (automatically) by the compiler when it is safe to do so.</li></ul><ul id="6f14de30-924a-479a-88b1-9d3fc451e542" class="bulleted-list"><li style="list-style-type:disc">Casting: It is a specific form of type conversion that involves explicit (manual) conversion, typically used to convert between data types that may result in potential data loss or precision errors.</li></ul></li></ol><ol type="1" id="1b7cd626-0df2-4c9b-9431-54435ea40711" class="numbered-list" start="2"><li><strong>Syntax:</strong><ul id="e360a831-87a6-4a87-a6fb-f69357a6661b" class="bulleted-list"><li style="list-style-type:disc">Type Conversion: Implicit type conversion does not require any specific syntax. It happens automatically based on the compatibility of the data types.</li></ul><ul id="77943cc2-7910-4f7c-8337-3bc9dc0b7f75" class="bulleted-list"><li style="list-style-type:disc">Casting: Explicit type conversion (casting) is done by placing the target data type in parentheses before the value or variable to be converted.</li></ul></li></ol><ol type="1" id="01c5b494-73a9-4d98-91ec-bf0ed9126db0" class="numbered-list" start="3"><li><strong>Safety:</strong><ul id="b661db5a-09fa-4f02-85a2-7ea1030c054a" class="bulleted-list"><li style="list-style-type:disc">Type Conversion: Implicit type conversion is safe when there is no risk of data loss or error, such as converting an <code>int</code> to a <code>long</code>.</li></ul><ul id="f754c615-cdcb-4bcf-973f-4788b48c1699" class="bulleted-list"><li style="list-style-type:disc">Casting: Explicit type conversion (casting) may result in data loss or precision errors, and it should be done with caution. For example, converting a <code>double</code> to an <code>int</code> will truncate the decimal part, leading to potential loss of data.</li></ul></li></ol><ol type="1" id="ff7bff17-3b57-42cf-b0c6-f15b7770a73d" class="numbered-list" start="4"><li><strong>Data Range:</strong><ul id="32816f4b-2e77-40d8-9ded-1cc61514de82" class="bulleted-list"><li style="list-style-type:disc">Type Conversion: Implicit type conversion can handle a broader range of data types as long as they are compatible.</li></ul><ul id="667462bc-2278-41e7-9717-aad0453ea612" class="bulleted-list"><li style="list-style-type:disc">Casting: Casting is limited to converting between compatible data types, and it is not suitable for all types of conversions.</li></ul></li></ol><ol type="1" id="812a16b5-9246-4eb3-9a44-1c74f9b2a3cb" class="numbered-list" start="5"><li><strong>Usage:</strong><ul id="0982754e-e946-4802-8abe-05d0974dd3b3" class="bulleted-list"><li style="list-style-type:disc">Type Conversion: Implicit type conversion is often used when assigning values of one data type to another when they are compatible.</li></ul><ul id="731a8074-534c-4d24-bf32-8030605b7fe1" class="bulleted-list"><li style="list-style-type:disc">Casting: Explicit type conversion (casting) is used when the programmer is aware of the potential risks of data loss and wants to perform the conversion manually.</li></ul></li></ol><p id="9bba6f65-55a4-489b-90fd-21004e74353e" class="">Q16. <strong id="Q16ANS">Why is java known as a platform independent language?
+ </strong><em><strong>Answer:</strong></em><strong> </strong>Java is known as a platform-independent language because of its ability to run the same Java code on any platform without modification. This platform independence is achieved through the following mechanisms:</p><ol type="1" id="8082d9b4-b3d4-4e05-bf2b-271b3058d025" class="numbered-list" start="1"><li><strong>Java Virtual Machine (JVM):</strong>
+Java code is compiled into an intermediate form called bytecode. Instead of directly compiling to machine code specific to a particular operating system, the Java compiler generates bytecode that is platform-neutral. When you run a Java program, the JVM interprets and executes this bytecode on the host machine, making it platform-independent.</li></ol><ol type="1" id="39f5a6cf-c581-4230-b339-f3a7082c1497" class="numbered-list" start="2"><li><strong>Write Once, Run Anywhere (WORA) Philosophy:</strong>
+Java follows the &quot;Write Once, Run Anywhere&quot; (WORA) philosophy. Once the Java source code is compiled into bytecode, it can be executed on any system with a compatible JVM. This eliminates the need to recompile the code for different platforms, making Java programs highly portable.</li></ol><ol type="1" id="b5c15831-d5fe-4189-8f9c-64f91f7dc1cf" class="numbered-list" start="3"><li><strong>Platform-Specific Implementations of JVM:</strong>
+Java is designed to have platform-specific implementations of the JVM. This means that each operating system has its own JVM implementation tailored for that platform. As long as a compatible JVM is available for the target platform, Java programs can be executed seamlessly without any changes to the source code.</li></ol><ol type="1" id="1531c23c-47a4-4516-8267-4c5b94b9cce2" class="numbered-list" start="4"><li><strong>Java API (Standard Library):</strong>
+Java&#x27;s rich standard library (Java API) provides a common set of classes and methods for performing various operations, such as I/O, networking, data manipulation, and user interface interactions. The Java API abstracts away the underlying platform-specific details, ensuring that the same Java code works consistently across different platforms.</li></ol><ol type="1" id="9a7611c4-71ad-4cec-9136-01d5f9a98700" class="numbered-list" start="5"><li><strong>No Platform-Specific Features:</strong>
+Java avoids platform-specific features in its core language and libraries. It enforces platform-neutrality by restricting certain operations that could lead to platform-specific behavior, such as direct access to memory addresses or platform-specific data types.</li></ol><p id="5e4f9c71-8363-4f84-b96d-d45ea19a38aa" class="">Because of these features, Java programs can be written and compiled on one platform, such as a Windows machine, and then executed on any other platform, such as macOS, Linux, or various other devices, including mobile phones and embedded systems, as long as the platform has a compatible JVM implementation. This platform independence has been one of the key reasons for Java&#x27;s popularity and wide adoption in various domains, including web development, enterprise applications, mobile development, and more.</p><p id="ebdec982-d70e-4600-baf6-2b5bf9d012f0" class="">Q17. <strong id="Q17ANS">Explain steps for executing a Java program</strong>.
+ <em>Answer: </em><strong>Steps for Executing a Java Program:</strong></p><ol type="1" id="a544a23c-051c-4e86-a26e-ebe94e064cc8" class="numbered-list" start="1"><li><strong>Install Java Development Kit (JDK):</strong>
+Ensure that the Java Development Kit (JDK) is installed on your computer. The JDK provides the Java compiler (<code>javac</code>) and the Java Runtime Environment (JRE) necessary for running Java programs.</li></ol><ol type="1" id="8f8ddeec-9657-4394-9276-54b9efd4bd55" class="numbered-list" start="2"><li><strong>Write the Java Code:</strong>
+Use a text editor or an Integrated Development Environment (IDE) to write the Java code. Save the code with a <code>.java</code> extension, which denotes a Java source file.</li></ol><ol type="1" id="3d6fd8f1-4af1-4824-8205-1009c88faa6a" class="numbered-list" start="3"><li><strong>Compile the Java Code:</strong>
+Open the command prompt (Windows) or terminal (macOS/Linux) and navigate to the directory where the Java source file is saved. Use the <code>javac</code> command followed by the filename with the <code>.java</code> extension to compile the Java code into bytecode. For example:<pre id="d8994a40-b716-48a2-ae80-ac440f8f9cfc" class="code code-wrap"><code>javac HelloWorld.java</code></pre></li></ol><ol type="1" id="0830b3cb-fea8-424d-91e2-6b33806f8d9e" class="numbered-list" start="4"><li><strong>Verify Successful Compilation:</strong>
+If there are no syntax errors in your code, the Java compiler will generate a corresponding bytecode file (<code>.class</code> file) for each class defined in the source file.</li></ol><ol type="1" id="b5753200-38fb-4e82-a340-bc91b33ccc11" class="numbered-list" start="5"><li><strong>Run the Java Program:</strong>
+After successful compilation, use the <code>java</code> command followed by the class name (without the <code>.class</code> extension) to execute the Java program. For example:<pre id="f0308626-3674-4458-ba83-1cbf136d70dd" class="code code-wrap"><code>java HelloWorld</code></pre></li></ol><ol type="1" id="8d4b966e-b0c4-4d63-bda6-b6c653bdc075" class="numbered-list" start="6"><li><strong>Observe Program Output:</strong>
+If the program runs without any errors, you will see the output on the console. The <code>main</code> method of your Java program will be executed, and any output generated by the program will be displayed.</li></ol><ol type="1" id="f14cc5b0-9389-424c-89cd-67f32c1b65e2" class="numbered-list" start="7"><li><strong>Exit the Program:</strong>
+Once the program execution is complete, the program will terminate, and you will return to the command prompt or terminal.</li></ol><p id="fec9d10d-1a95-4ba5-b153-5e82ca4044f8" class="">Q18. <strong id="Q18ANS"> Justify each of the following statements above java:</strong></p><p id="48fc0d47-4356-488e-a768-28ace417e48b" class=""><strong>i) Java is operating system independent.</strong></p><p id="a2070e1c-0b8c-4348-bb80-85267ad95d2f" class=""><strong>ii) Java is safe and secure.</strong></p><p id="36cc4e4c-f39f-494c-be6d-437311606b85" class=""><strong>iii) Java is small and simple.</strong></p><p id="e90f0374-b596-4f4a-a6e2-7e5e326438dd" class="">  <em>Answer:</em> <strong>i) Java is operating system independent.</strong></p><p id="6429d222-6f75-4884-9be8-f484c41c4f1a" class=""><strong>Justification:</strong> Java is considered operating system independent because of its platform independence feature. When Java code is compiled, it is converted into bytecode, which is a platform-neutral intermediate representation of the code. This bytecode can be executed on any system that has a compatible Java Virtual Machine (JVM). The JVM acts as an interpreter, translating the bytecode into machine-specific instructions at runtime. As a result, Java programs can be run on various operating systems such as Windows, macOS, Linux, and others without modification, making it operating system independent.</p><p id="f5a79147-6267-4b76-9819-22927792fb04" class=""><strong>ii) Java is safe and secure.</strong></p><p id="421ce288-64e0-4333-9a30-0a3044dbb530" class=""><strong>Justification:</strong> Java is designed with a strong emphasis on security. Several features contribute to Java&#x27;s safety and security:</p><ol type="1" id="e7076ed9-320f-46af-b97c-2924d0876de9" class="numbered-list" start="1"><li>Bytecode Verification: The JVM performs bytecode verification before executing the code, ensuring that it adheres to certain safety rules. This prevents malicious code from being executed and provides protection against unauthorized access to system resources.</li></ol><ol type="1" id="d0a1418c-217c-4045-9171-a4ad4f338f9f" class="numbered-list" start="2"><li>No Explicit Pointers: Java does not have explicit pointers, reducing the risk of memory manipulation and buffer overflow vulnerabilities that are common in languages like C and C++.</li></ol><ol type="1" id="25dc8de6-e5d8-49e3-9798-4d716c6de412" class="numbered-list" start="3"><li>Garbage Collection: Java&#x27;s automatic memory management (garbage collection) ensures that objects that are no longer in use are automatically deallocated, preventing memory leaks and invalid memory access issues.</li></ol><ol type="1" id="bf54a07e-d563-49ee-81d3-c8e39c5742b2" class="numbered-list" start="4"><li>Sandbox Environment: Java applets (small Java applications) run in a sandboxed environment, restricting their access to certain resources on the host system. This prevents potentially harmful actions by untrusted applets.</li></ol><ol type="1" id="10296290-8504-43da-8da5-e3376ce73ecd" class="numbered-list" start="5"><li>Classloader Architecture: Java uses a classloader architecture that isolates code from different sources, providing additional security by separating different codebases.</li></ol><p id="ad199bd2-c515-4049-a5c2-005b68f3fe33" class=""><strong>iii) Java is small and simple.</strong></p><p id="4d956c6d-ed65-43ff-ac84-be798c145ea9" class=""><strong>Justification:</strong> Java is designed to be simple and easy to learn, with a small set of core features that make the language easy to understand and use. Some aspects that contribute to Java&#x27;s simplicity are:</p><ol type="1" id="e50656ec-564f-4a8a-aee9-07904619ebd1" class="numbered-list" start="1"><li>Clear Syntax: Java has a clean and straightforward syntax, making it easy for developers to write and read code.</li></ol><ol type="1" id="ba90d664-3c52-4663-8003-7cd661fe0f1e" class="numbered-list" start="2"><li>Object-Oriented Approach: Java follows an object-oriented programming (OOP) paradigm, which provides a clear and organized way of structuring code.</li></ol><ol type="1" id="a1bd4550-0847-4ff8-8e3d-e7f4be51a9c5" class="numbered-list" start="3"><li>No Pointer Arithmetic: Java eliminates the complexity of pointer arithmetic, reducing the risk of programming errors and bugs.</li></ol><ol type="1" id="d250247c-6254-46ff-b634-5b0b22a572ac" class="numbered-list" start="4"><li>Built-in Libraries: Java comes with a rich set of standard libraries (Java API) that provide common functionality for various tasks, saving developers from writing complex code from scratch.</li></ol><ol type="1" id="381f2463-9d74-488d-9a48-e6ca522f26c0" class="numbered-list" start="5"><li>Elimination of Low-Level Features: Java abstracts away low-level features like direct memory manipulation, which simplifies the language and reduces the potential for bugs and security vulnerabilities.</li></ol><p id="92c79d59-8395-46a8-8d52-1cb36c27a023" class="">Overall, Java&#x27;s simplicity and focus on safety and platform independence have contributed to its widespread adoption and popularity among developers for a variety of applications.</p><p id="d3a1dfdf-fd70-45db-bbaa-5ce4f916cc3a" class="">Q19.<strong id="Q19ANS"> Write a java program to print the square of the first 20 odd numbers.</strong></p><pre id="f0423975-4215-474d-9289-a4686ef5d956" class="code code-wrap"><code>public class SquareOfOddNumbers {
+    public static void main(String[] args) {
+        int count = 0;
+        int number = 1;
+
+        System.out.println(&quot;Square of the first 20 odd numbers:&quot;);
+
+        while (count &lt; 20) {
+            int square = number * number;
+            System.out.println(number + &quot; * &quot; + number + &quot; = &quot; + square);
+            number += 2; // Increment by 2 to get the next odd number
+            count++;
+        }
+    }
+}</code></pre><p id="1604cfd2-1b75-4b6b-9be1-b449be8d7d7e" class="">Example Output:</p><pre id="59b8df8a-5fb2-4857-9e94-22f66f79904e" class="code code-wrap"><code>Square of the first 20 odd numbers:
+1 * 1 = 1
+3 * 3 = 9
+5 * 5 = 25
+7 * 7 = 49
+9 * 9 = 81
+11 * 11 = 121
+13 * 13 = 169
+15 * 15 = 225
+17 * 17 = 289
+19 * 19 = 361
+21 * 21 = 441
+23 * 23 = 529
+25 * 25 = 625
+27 * 27 = 729
+29 * 29 = 841
+31 * 31 = 961
+33 * 33 = 1089
+35 * 35 = 1225
+37 * 37 = 1369
+39 * 39 = 1521</code></pre><p id="7fb9c4b0-243c-48f8-94ef-5caf4dc5283b" class="">Explanation:
+In this program, we use a <code>while</code> loop to generate the first 20 odd numbers. The variable <code>number</code> starts at 1 (the first odd number), and in each iteration, we calculate the square of the current <code>number</code> using the formula <code>square = number * number</code>. We then print the square along with the original number. To get the next odd number, we increment <code>number</code> by 2 in each iteration (odd numbers are always at a difference of 2 from each other). The loop continues until <code>count</code> reaches 20, printing the square of the first 20 odd numbers.</p><p id="097733e8-e3b5-4bd5-81c5-320c016631e1" class="">Q20. <strong id="Q20ANS">Describe various types supported in java with example.
+</strong><em><strong>Answer:</strong></em><strong> </strong>Java supports several data types, which can be broadly categorized into two groups: primitive data types and reference data types. Here&#x27;s an overview of the data types supported in Java along with examples:</p><p id="694c7719-db70-441f-844c-28b5e781e158" class=""><strong>1. Primitive Data Types:</strong>
+Primitive data types represent simple values and are not objects. They are the building blocks of data manipulation in Java and have a fixed size in memory. Java has eight primitive data types:</p><p id="44eca9e8-ff9b-4577-894b-09b9dcba4740" class="">a) <strong>Numeric Types:</strong>
+- <code>byte</code>: 8-bit signed integer. Range: -128 to 127.
+- <code>short</code>: 16-bit signed integer. Range: -32,768 to 32,767.
+- <code>int</code>: 32-bit signed integer. Range: -2^31 to 2^31 - 1.
+- <code>long</code>: 64-bit signed integer. Range: -2^63 to 2^63 - 1.
+- <code>float</code>: 32-bit single-precision floating-point. Range: approximately ±3.40282347E+38F with 7 significant digits.
+- <code>double</code>: 64-bit double-precision floating-point. Range: approximately ±1.79769313486231570E+308 with 15 significant digits.</p><p id="5d70df24-83f4-42ea-a435-ff84c9c09d7f" class="">b) <strong>Character Type:</strong>
+- <code>char</code>: 16-bit Unicode character. Represents single characters and uses single quotes, e.g., &#x27;A&#x27;, &#x27;b&#x27;, &#x27;1&#x27;.</p><p id="09e0e585-1d38-4dbc-a5d9-f1252078e860" class="">c) <strong>Boolean Type:</strong>
+- <code>boolean</code>: Represents a true/false value. Possible values are <code>true</code> or <code>false</code>.</p><p id="245f9869-9185-4469-80a6-4221327158fa" class=""><strong>Examples:</strong></p><pre id="002300f2-a235-4777-b90b-570edfa76272" class="code code-wrap"><code>byte age = 30;
+short distance = 10000;
+int population = 1000000;
+long bigNumber = 999999999L;
+float temperature = 25.5f;
+double pi = 3.141592653589793;
+char grade = &#x27;A&#x27;;
+boolean isJavaFun = true;</code></pre><p id="c1118f9d-1d3d-4cd6-b28a-37c3a270d18c" class=""><strong>2. Reference Data Types:</strong>
+Reference data types refer to objects created using classes or interfaces. Unlike primitive data types, which store the actual data, reference data types store references (memory addresses) to the objects in memory. Java supports the following reference data types:</p><ul id="1622d49d-8410-451c-a212-11e019eb5882" class="bulleted-list"><li style="list-style-type:disc"><code>String</code>: Represents a sequence of characters and is one of the most commonly used reference data types in Java.</li></ul><ul id="324221d7-0580-447f-938d-c33c0c53c963" class="bulleted-list"><li style="list-style-type:disc">Arrays: Collections of elements of the same type.</li></ul><ul id="dac60bd8-b588-490c-b1cb-77e0b3a33c7b" class="bulleted-list"><li style="list-style-type:disc">Custom Classes: Objects created using class definitions.</li></ul><p id="321292a8-f061-4268-9d71-f1c46e86ea77" class=""><strong>Examples:</strong></p><pre id="175ac0c1-11d5-463a-9696-954d78321b87" class="code code-wrap"><code>String name = &quot;John&quot;;
+int[] numbers = { 1, 2, 3, 4, 5 };
+MyClass obj = new MyClass();</code></pre><p id="bbbd03bb-9bae-46ee-b1cd-2eb151d85876" class="">In the examples above, <code>name</code> is a reference variable of type <code>String</code>, <code>numbers</code> is a reference variable of type <code>int[]</code> (integer array), and <code>obj</code> is a reference variable of a custom class <code>MyClass</code>.</p><p id="9c8eefe0-ea80-4c96-9052-d13f38146879" class="">These data types enable developers to work with different types of data and create complex data structures, making Java a versatile and powerful programming language.</p><p id="8e9f38e1-fd09-4b4d-ab30-969070993442" class="">Q21. <strong id="Q21ANS">Write ‘for’,’do-while’ and ‘while’  statements to compute the following product 1 * 2 * 3 * …. * 25.
+</strong><em><strong>Answer:</strong></em></p><p id="40f466ae-beef-46ad-a21a-fd6663648a1e" class=""><strong>1. Using &#x27;for&#x27; loop:</strong></p><pre id="7570524d-6da7-41f8-ba16-a2a6e1ee6517" class="code code-wrap"><code>public class ProductWithForLoop {
+    public static void main(String[] args) {
+        int product = 1;
+
+        for (int i = 1; i &lt;= 25; i++) {
+            product *= i;
+        }
+
+        System.out.println(&quot;Product using &#x27;for&#x27; loop: &quot; + product);
+    }
+}</code></pre><p id="e9dd0369-ad58-4056-9193-7da698c95cf1" class=""><strong>2. Using &#x27;do-while&#x27; loop:</strong></p><pre id="93f11b38-edc4-4c4d-8422-be19ad260043" class="code code-wrap"><code>public class ProductWithDoWhileLoop {
+    public static void main(String[] args) {
+        int product = 1;
+        int i = 1;
+
+        do {
+            product *= i;
+            i++;
+        } while (i &lt;= 25);
+
+        System.out.println(&quot;Product using &#x27;do-while&#x27; loop: &quot; + product);
+    }
+}</code></pre><p id="e6b6be9a-b861-41d8-b46a-8e16d2875f58" class=""><strong>3. Using &#x27;while&#x27; loop:</strong></p><pre id="3707afec-60cb-45bf-b7bf-ccf6cb8441d0" class="code code-wrap"><code>public class ProductWithWhileLoop {
+    public static void main(String[] args) {
+        int product = 1;
+        int i = 1;
+
+        while (i &lt;= 25) {
+            product *= i;
+            i++;
+        }
+
+        System.out.println(&quot;Product using &#x27;while&#x27; loop: &quot; + product);
+    }
+}</code></pre><p id="84eeae9c-4d10-4131-942a-1cb54aa2b7d1" class="">Example Output:</p><pre id="034fde87-6699-4d59-81a9-f5395bd571f1" class="code code-wrap"><code>Product using &#x27;for&#x27; loop: 15511210043330985984000000
+Product using &#x27;do-while&#x27; loop: 15511210043330985984000000
+Product using &#x27;while&#x27; loop: 15511210043330985984000000</code></pre><p id="44e07e2a-d23d-4339-bdac-3292a87dbba9" class="">Explanation:
+In all three programs, we use a loop to iterate from 1 to 25 and calculate the product of all the numbers. The &#x27;for&#x27;, &#x27;do-while&#x27;, and &#x27;while&#x27; loops are different ways to achieve the same result. The variable <code>product</code> is initialized to 1, and in each iteration, it is multiplied with the current value of <code>i</code>, where <code>i</code> is the loop control variable. The loops continue until <code>i</code> reaches 25, and the final product is printed as the output. All three loops yield the same product, which is the result of 1 * 2 * 3 * .... * 25.</p><p id="a6807b10-f6a4-41fb-a5f4-3d352d5a6a73" class="">Q22. <strong>What is an operator? Explain about precedence and associativity of an operator.
+</strong><em><strong>Answer: @</strong></em></p><p id="4bf843af-9049-44c5-95f5-bbb50fbc33b1" class=""><strong>Operator:</strong>
+In programming, an operator is a symbol or a special character that performs an operation on one or more operands (variables or values) to produce a result. Operators are fundamental building blocks of expressions, which are combinations of variables, constants, and operators used to perform computations.</p><p id="92de1419-b523-473a-be7f-465d731737d1" class=""><strong>Precedence of Operators:</strong>
+Operator precedence defines the order in which different operators are evaluated within an expression. When an expression contains multiple operators, they are not evaluated from left to right. Instead, operators with higher precedence are evaluated first. If two operators have the same precedence, the associativity of the operators comes into play.</p><p id="6031f51f-5b28-4eb9-8994-3d77b734e9d6" class=""><strong>Associativity of Operators:</strong>
+Associativity determines the order in which operators of the same precedence are evaluated when they appear consecutively in an expression. Operators can be left-associative or right-associative:</p><ol type="1" id="ef7a2e04-2dfa-4574-aadf-db9709c6bbb6" class="numbered-list" start="1"><li><strong>Left-Associative:</strong><ul id="80c0eef9-f84d-41c1-b9b9-2c952fef1345" class="bulleted-list"><li style="list-style-type:disc">Left-associative operators are evaluated from left to right when they appear in an expression.</li></ul><ul id="a06a51b5-15e6-4081-ba87-f9e26aae6012" class="bulleted-list"><li style="list-style-type:disc">Most operators in programming languages are left-associative, including arithmetic and logical operators.</li></ul><p id="4e6f75dc-7d8b-467e-a08d-ce85699d1b96" class="">Example of left-associative operators:</p><pre id="f65b6e90-f32b-4cae-8a94-78e1dd3419bb" class="code code-wrap"><code>a + b + c  
+// &#x27;a&#x27; and &#x27;b&#x27; are evaluated first, and then the result is added to &#x27;c&#x27;.
+a - b - c  
+// &#x27;a&#x27; and &#x27;b&#x27; are evaluated first, and then the result is subtracted from &#x27;c&#x27;.</code></pre></li></ol><ol type="1" id="f442b2eb-5012-4d2d-9465-cf1220feccb4" class="numbered-list" start="2"><li><strong>Right-Associative:</strong><ul id="02c918ff-a9e4-4870-8c99-f4b2bc82b573" class="bulleted-list"><li style="list-style-type:disc">Right-associative operators are evaluated from right to left when they appear in an expression.</li></ul><ul id="8d1c76d5-964c-4bbd-8dfb-2b769534f6aa" class="bulleted-list"><li style="list-style-type:disc">The right-associative operator in Java is the assignment operator <code>=</code>.</li></ul><p id="5bfd44f3-91b3-49cd-8825-c4f89b23f2b3" class="">Example of right-associative operator:</p><pre id="18eea3da-b71b-4049-8100-7bc211b0e741" class="code code-wrap"><code>int x, y, z;
+x = y = z = 10;  
+// The value &#x27;10&#x27; is assigned to &#x27;z&#x27; first, then to &#x27;y&#x27;, and finally to &#x27;x&#x27;.</code></pre></li></ol><p id="e3c58520-7553-43a2-b50d-e782df7e3f92" class=""><strong>Example: Precedence and Associativity:</strong>
+Consider the following expression:</p><pre id="797f4c93-984e-4f5b-b1d9-54e11a28a26f" class="code code-wrap"><code>int result = 5 + 10 * 2 - 3 / 3;</code></pre><p id="db5d81b4-29d7-430a-9e90-ae98178bbcd9" class="">To evaluate this expression, the operators are evaluated based on their precedence and associativity:</p><ol type="1" id="737ee81a-82b9-4373-84c4-19129626e77f" class="numbered-list" start="1"><li><code>*</code> (multiplication) has higher precedence than <code>+</code> (addition), so <code>10 * 2</code> is evaluated first, resulting in <code>20</code>.</li></ol><ol type="1" id="e3ca3d8a-5b4a-422c-8b5e-6c41210ccf48" class="numbered-list" start="2"><li><code>/</code> (division) and <code>-</code> (subtraction) have the same precedence, but they are left-associative, so <code>3 / 3</code> is evaluated first, resulting in <code>1</code>.</li></ol><ol type="1" id="b186703b-f215-44b1-811c-570b5d3ee19f" class="numbered-list" start="3"><li>Finally, the addition and subtraction are performed from left to right: <code>5 + 20 - 1</code>, which results in <code>24</code>.</li></ol><p id="6a53735b-adf7-4dba-8253-c4fc3cdcd3ca" class="">So, the final value of <code>result</code> will be <code>24</code>. Understanding operator precedence and associativity is crucial to avoid errors and ensure that expressions are evaluated correctly in programming.</p><p id="b29194a1-2200-4837-8405-4a95358ca691" class="">Q23. <strong id="Q23ANS">Write a java program that calculates the sum of digits of a given number.</strong></p><pre id="38096732-60d6-4f6c-b393-6bc70fe17316" class="code code-wrap"><code>public class SumOfDigits {
+    public static void main(String[] args) {
+        int number = 12345;
+        int sum = calculateSumOfDigits(number);
+
+        System.out.println(&quot;The sum of digits of &quot; + number + &quot; is: &quot; + sum);
+    }
+
+    public static int calculateSumOfDigits(int num) {
+        int sum = 0;
+
+        while (num &gt; 0) {
+            int digit = num % 10; // Extract the last digit
+            sum += digit; // Add the digit to the sum
+            num /= 10; // Remove the last digit from the number
+        }
+
+        return sum;
+    }
+}</code></pre><p id="fd284f16-f572-4dc4-9f0f-4d36e4fb10e9" class="">Example Output:</p><pre id="91e61699-1bc9-49d4-8e60-c32c7f40c0a7" class="code code-wrap"><code>The sum of digits of 12345 is: 15</code></pre><p id="ac82ae5f-38c4-4ba7-aeb6-25e109265695" class="">Explanation:
+In this program, we define a method called <code>calculateSumOfDigits</code>, which takes an integer <code>num</code> as input and returns the sum of its digits. The main method demonstrates how to use this method. We initialize the variable <code>number</code> with the value <code>12345</code>, and then we call the <code>calculateSumOfDigits</code> method with this number as an argument. The method iterates through the digits of the number by repeatedly extracting the last digit using the modulus operator <code>%</code>, adding it to the <code>sum</code>, and removing it from the number by dividing it by 10. This process continues until there are no more digits left (i.e., the number becomes zero). Finally, the method returns the computed <code>sum</code>, which is then printed to the console in the main method. In this example, the sum of the digits of <code>12345</code> is <code>15</code> (1 + 2 + 3 + 4 + 5).</p><p id="0e331a67-4e40-419e-b359-5b9ea092ad7e" class="">Q24. <strong id="Q24ANS">Explain the steps for executing a java program. What are the sources and byte code files in java?
+</strong><em><strong>Answer: </strong></em><strong>
+   Steps for Executing a Java Program:</strong>
+To execute a Java program, you need to follow these steps:</p><ol type="1" id="1981fc66-17e3-4377-908e-0a492408b9da" class="numbered-list" start="1"><li><strong>Install Java Development Kit (JDK):</strong>
+Before you can write and run Java programs, you need to install the Java Development Kit (JDK) on your computer. The JDK includes the Java compiler (<code>javac</code>) to compile Java source code and the Java Runtime Environment (JRE) to run Java programs.</li></ol><ol type="1" id="4ac0cdd0-516d-484b-9550-c22f048aaa80" class="numbered-list" start="2"><li><strong>Write the Java Code:</strong>
+Use a text editor or an Integrated Development Environment (IDE) to write the Java code. Save the code with a <code>.java</code> extension, which denotes a Java source file.</li></ol><ol type="1" id="a83140a5-7c84-4484-9241-8b1486d8ee4f" class="numbered-list" start="3"><li><strong>Open Command Prompt or Terminal:</strong>
+Open the command prompt (Windows) or terminal (macOS/Linux).</li></ol><ol type="1" id="d458c96d-5174-4e39-994d-22f05949bf0a" class="numbered-list" start="4"><li><strong>Navigate to the Directory:</strong>
+Use the <code>cd</code> command to navigate to the directory where the Java source file is saved.</li></ol><ol type="1" id="f97c4b40-300f-4f20-9b6d-e48ae87b9767" class="numbered-list" start="5"><li><strong>Compile the Java Code:</strong>
+Use the <code>javac</code> command followed by the filename with the <code>.java</code> extension to compile the Java code into bytecode. For example:<pre id="6496bae9-324c-4594-b2dc-3f2a1a1139cc" class="code code-wrap"><code>javac HelloWorld.java</code></pre></li></ol><ol type="1" id="9bc929e9-0d6c-453c-a413-7f9a7d9337ba" class="numbered-list" start="6"><li><strong>Verify Successful Compilation:</strong>
+If there are no syntax errors in your code, the Java compiler will generate a corresponding bytecode file (<code>.class</code> file) for each class defined in the source file.</li></ol><ol type="1" id="211a5562-4882-4cc9-9d4f-68abe876769f" class="numbered-list" start="7"><li><strong>Run the Java Program:</strong>
+After successful compilation, use the <code>java</code> command followed by the class name (without the <code>.class</code> extension) to execute the Java program. For example:<pre id="64e44690-522d-4105-8f0f-d0812ec053b3" class="code code-wrap"><code>java HelloWorld</code></pre></li></ol><ol type="1" id="623bd9c7-2468-4c32-9692-1f91ba48f48a" class="numbered-list" start="8"><li><strong>Observe Program Output:</strong>
+If the program runs without any errors, you will see the output on the console. The <code>main</code> method of your Java program will be executed, and any output generated by the program will be displayed.</li></ol><ol type="1" id="e1ef5ad6-12ba-4b86-b75d-a3530d5ee005" class="numbered-list" start="9"><li><strong>Exit the Program:</strong>
+Once the program execution is complete, the program will terminate, and you will return to the command prompt or terminal.</li></ol><p id="d2b087e6-4d49-42af-a245-c92ef5deb33a" class=""><strong>Sources and Bytecode Files in Java:</strong></p><ul id="273efb51-2b61-4e77-b31c-e96054276386" class="bulleted-list"><li style="list-style-type:disc"><strong>Source Files (</strong><code><strong>.java</strong></code><strong>):</strong>
+A source file in Java contains the actual Java code written by the programmer. It is a text file with the <code>.java</code> extension. Source files contain classes, interfaces, and other Java elements that define the program&#x27;s behavior.<p id="f6a7ca14-3fd0-4532-9690-cfb7af17d77d" class="">Example:</p><pre id="9717bd30-a20c-46fa-8b64-bcd89e7017de" class="code code-wrap"><code>// Filename: HelloWorld.java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, World!&quot;);
+    }
+}</code></pre></li></ul><ul id="8542695f-9836-4f4e-a61c-6e56b03e8811" class="bulleted-list"><li style="list-style-type:disc"><strong>Bytecode Files (</strong><code><strong>.class</strong></code><strong>):</strong>
+After you compile a Java source file, the Java compiler (<code>javac</code>) generates bytecode, which is a platform-independent intermediate representation of the code. Bytecode files have the <code>.class</code> extension and contain instructions that the Java Virtual Machine (JVM) can understand and execute.<p id="b6a949a9-e418-439c-8906-1c135cbec56b" class="">Example:
+After compiling <code>HelloWorld.java</code>, the Java compiler generates a bytecode file <code>HelloWorld.class</code>, which is executed by the JVM using the <code>java</code> command:</p><pre id="a2741deb-3e1b-4b4b-880e-f4525dd14102" class="code code-wrap"><code>java HelloWorld</code></pre><p id="9085363e-8e91-46f8-b158-c8ac3bac726f" class="">The JVM interprets and executes the bytecode to produce the output on the console, in this case, &quot;Hello, World!&quot;.</p></li></ul><p id="5c816be3-8ebf-4488-ba64-91c18269a865" class="">The Java compiler (<code>javac</code>) converts the human-readable Java source code in the <code>.java</code> file into a machine-readable intermediate bytecode format in the <code>.class</code> file, allowing Java programs to be platform-independent and executed on any system with a compatible JVM.</p><p id="69464ced-0122-4dc4-9c5e-4b9fd41f5d63" class="">Q25. <strong id="Q25ANS">Differentiate between procedural language and Object oriented language.
+</strong><em><strong>Answer: </strong></em></p><p id="dfecb6d7-c22a-4e78-a8f0-90ffdc13e343" class=""><strong>Procedural Language:</strong>
+Procedural programming is a programming paradigm that follows a top-down approach where a program is divided into procedures or functions. In procedural languages, the emphasis is on writing procedures that manipulate data, and the data and functions are treated as separate entities. C and Pascal are examples of procedural languages.</p><p id="d00518c1-0650-40e6-9a8e-05bc88997999" class=""><strong>Characteristics of Procedural Languages:</strong></p><ol type="1" id="83ff71da-1d24-4adb-a73a-f95d0c784aae" class="numbered-list" start="1"><li>Emphasis on Procedures: Procedural languages focus on writing procedures or functions that perform specific tasks.</li></ol><ol type="1" id="0a8315ee-6dcc-4385-b238-9cd583af9e63" class="numbered-list" start="2"><li>Data and Functions Separation: Data and functions are treated as separate entities, and procedures manipulate data.</li></ol><ol type="1" id="2dcab313-f0ae-4a2a-a354-322d80b5a28d" class="numbered-list" start="3"><li>Global Data: Procedural programs often use global data that can be accessed and modified by different functions.</li></ol><ol type="1" id="a84e63b5-76c7-4a48-8874-3a2d3bc9fb18" class="numbered-list" start="4"><li>Procedural Flow: The program execution follows a top-down flow, where procedures are called in a sequence to achieve the desired result.</li></ol><ol type="1" id="c6530581-e2b9-4179-95bb-f56009897ff7" class="numbered-list" start="5"><li>Limited Code Reusability: Code reusability is limited, as functions are specific to the tasks they perform.</li></ol><p id="e89b29e7-2e3b-4850-9fa7-b1e23dd72ce0" class=""><strong>Object-Oriented Language:</strong>
+Object-oriented programming (OOP) is a programming paradigm that focuses on creating objects that encapsulate data and behavior. In OOP, the emphasis is on designing classes and objects that model real-world entities. Java, C++, and Python are examples of object-oriented languages.</p><p id="c1329c6a-2059-4e4c-8a6f-69b0331efad1" class=""><strong>Characteristics of Object-Oriented Languages:</strong></p><ol type="1" id="4557e104-9af3-4664-b7c2-c633c3ed8e83" class="numbered-list" start="1"><li>Emphasis on Objects: Object-oriented languages emphasize creating objects that encapsulate data and behavior.</li></ol><ol type="1" id="4b681582-1ae9-46d2-9283-ad3c36e49c6a" class="numbered-list" start="2"><li>Data and Functions Encapsulation: Data and functions (methods) that operate on the data are encapsulated within objects.</li></ol><ol type="1" id="e1fc2d56-dbad-48af-9305-6570dccb5145" class="numbered-list" start="3"><li>Data Abstraction: Objects hide the internal details of their implementation, providing only essential functionalities to the outside world.</li></ol><ol type="1" id="6bfc30c7-b259-4d2c-9f88-96e9eabcb136" class="numbered-list" start="4"><li>Inheritance: OOP supports inheritance, where classes can inherit properties and behavior from other classes, promoting code reuse.</li></ol><ol type="1" id="47396fce-3794-4921-8f02-238c35661b48" class="numbered-list" start="5"><li>Polymorphism: Polymorphism allows objects of different classes to be treated as objects of a common superclass, enhancing flexibility and extensibility.</li></ol><p id="0c3338d3-1f81-4e96-8974-5dea88ee07d2" class=""><strong>Difference between Procedural and Object-Oriented Languages:</strong></p><table id="f8378879-4188-418c-b050-41c7670a0bcd" class="simple-table"><tbody><tr id="cd3fc578-9898-4bf0-8332-e59aa561b69d"><td id="z`]V" class="">Aspect</td><td id="j{r^" class="">Procedural Language</td><td id="}DK}" class="">Object-Oriented Language</td></tr><tr id="39ce7a7d-e490-4f36-8546-1857de715273"><td id="z`]V" class="">Data and Function Relationship</td><td id="j{r^" class="">Separate entities</td><td id="}DK}" class="">Encapsulated within objects</td></tr><tr id="66936293-aac1-417e-8430-841e0331f765"><td id="z`]V" class="">Program Structure</td><td id="j{r^" class="">Procedures and functions</td><td id="}DK}" class="">Objects and classes</td></tr><tr id="4252b0d8-b98c-4816-b381-f7e54b661121"><td id="z`]V" class="">Data Access and Modifiability</td><td id="j{r^" class="">Often uses global data</td><td id="}DK}" class="">Encourages data hiding and encapsulation within objects</td></tr><tr id="1946a3a1-9fdd-4cb9-8638-dd700aa6def2"><td id="z`]V" class="">Code Reusability</td><td id="j{r^" class="">Limited code reusability</td><td id="}DK}" class="">Promotes code reusability through inheritance and polymorphism</td></tr><tr id="22c980d3-548a-4588-99a1-616637d73826"><td id="z`]V" class="">Focus</td><td id="j{r^" class="">Emphasis on procedures and tasks</td><td id="}DK}" class="">Emphasis on modeling real-world entities and their interactions</td></tr></tbody></table><p id="9897f1e3-3c47-45ac-815c-9570cd0a711e" class="">In summary, procedural languages are focused on procedures or functions that manipulate data, whereas object-oriented languages are focused on creating objects that encapsulate data and behavior. OOP promotes data hiding, code reusability, and a more natural way of modeling real-world entities and their interactions. Procedural languages, on the other hand, are more straightforward and may be preferred for certain tasks that do not require complex object modeling.</p><p id="d7993d9a-27b6-4875-bbfb-6c8d184f8b2d" class="">Q26.<strong id="Q26ANS"> Write a java program that calculates the sum of the first 30 odd numbers.</strong></p><pre id="a61c53fe-602d-4116-bf0b-bcd9f4b86760" class="code code-wrap"><code>public class SumOfFirstOddNumbers {
+    public static void main(String[] args) {
+        int count = 0;
+        int number = 1;
+        int sum = 0;
+
+        while (count &lt; 30) {
+            sum += number;
+            number += 2; // Increment by 2 to get the next odd number
+            count++;
+        }
+
+        System.out.println(&quot;Sum of the first 30 odd numbers: &quot; + sum);
+    }
+}</code></pre><p id="1f791cd6-6867-41f1-8790-29bdc12f5c8e" class="">Example Output:</p><pre id="34f6d4cb-5aaa-4e7d-8d36-e942fe6bdb2d" class="code code-wrap"><code>Sum of the first 30 odd numbers: 2250</code></pre><p id="335cea86-4af4-4384-8c57-c5fdfdf9ad84" class="">Explanation:
+In this program, we use a <code>while</code> loop to iterate through the first 30 odd numbers. The variable <code>number</code> starts at 1 (the first odd number), and in each iteration, we add <code>number</code> to the <code>sum</code> variable to calculate the running total. To get the next odd number, we increment <code>number</code> by 2 in each iteration (odd numbers are always at a difference of 2 from each other). The loop continues until <code>count</code> reaches 30, and the final sum is printed as the output. The sum of the first 30 odd numbers is <code>2250</code>.</p><p id="be7c6236-c286-40a9-b3ba-9cbc3d983b55" class="">Q27. <strong id="Q27ANS">What is primitive data type conversion and how does it differ from casting? Explain it with an example.
+</strong><em><strong>Answer: </strong></em></p><p id="2f86cf2f-2723-433b-94b4-9c132e46f905" class=""><strong>Primitive Data Type Conversion:</strong>
+Primitive data type conversion, also known as type casting or type conversion, is the process of converting a value of one primitive data type to another. In Java, certain data types are considered compatible, and their values can be converted implicitly without any loss of information. This conversion is known as widening or automatic conversion. However, in some cases, when converting to a smaller data type or when there might be a loss of information, explicit casting is required.</p><p id="d04feee5-7fea-4991-bcd0-0411fa8b656b" class=""><strong>Casting in Java:</strong>
+Casting is a way to explicitly convert a value of one data type to another data type, which is not possible through automatic conversion. It allows you to inform the compiler to treat the value as if it belongs to the target data type. However, it should be done with caution, as improper casting can lead to data loss or unexpected results.</p><p id="7dfc2fc0-682f-4a7a-8016-103e723841e0" class=""><strong>Example of Implicit Conversion (Widening):</strong></p><pre id="a5efc89c-9167-4a59-bbe6-a2b6ba824777" class="code code-wrap"><code>public class PrimitiveConversion {
+    public static void main(String[] args) {
+        int intValue = 10;
+        long longValue = intValue; // Implicit conversion: int to long
+
+        System.out.println(&quot;int value: &quot; + intValue);
+        System.out.println(&quot;long value: &quot; + longValue);
+    }
+}</code></pre><p id="43f905a7-d4d7-4cd1-a75d-534be0792ce6" class="">In this example, we have an <code>int</code> variable <code>intValue</code> with the value <code>10</code>. We assign this value to a <code>long</code> variable <code>longValue</code>. This assignment is an example of implicit or widening conversion because a <code>long</code> can hold a larger range of values compared to an <code>int</code>. Java automatically performs the conversion, and no explicit casting is required.</p><p id="963487e6-0a32-4c51-9652-da94284b9054" class=""><strong>Example of Explicit Conversion (Narrowing):</strong></p><pre id="a8ed73f1-f0d1-4b3b-8fb8-5d55b6fc3d36" class="code code-wrap"><code>public class PrimitiveConversion {
+    public static void main(String[] args) {
+        long longValue = 1234567890L;
+        int intValue = (int) longValue; // Explicit conversion: long to int
+
+        System.out.println(&quot;long value: &quot; + longValue);
+        System.out.println(&quot;int value: &quot; + intValue);
+    }
+}</code></pre><p id="93bec21d-5817-48c0-b38c-b0e923e625c4" class="">In this example, we have a <code>long</code> variable <code>longValue</code> with the value <code>1234567890L</code>. We want to assign this value to an <code>int</code> variable <code>intValue</code>. However, <code>long</code> has a larger range than <code>int</code>, and the value <code>1234567890</code> cannot be represented as an <code>int</code> without loss of data. To perform this assignment, we explicitly cast <code>longValue</code> to an <code>int</code>, as shown in <code>(int) longValue</code>. The explicit casting informs the compiler that we are aware of the potential data loss and allows the conversion.</p><p id="4a945087-b6f1-4b7e-b459-58a73491390b" class=""><strong>Note:</strong> When performing explicit conversion (casting), be careful with potential data loss, especially when converting from larger data types to smaller ones.</p><p id="5cbe1abc-0b21-49f5-b256-64e61a4c01ad" class="">Q28. <strong id="Q28ANS">What are the rules for naming an identifier in Java?
+  </strong><em><strong>Answer:</strong></em><strong> </strong>In Java, identifiers are used to give names to variables, methods, classes, and other program elements. Identifiers are user-defined names and must follow certain rules for their naming. Here are the rules for naming an identifier in Java:</p><ol type="1" id="81724e2b-c6e0-4fea-a659-f570eecbf08a" class="numbered-list" start="1"><li><strong>Valid Characters:</strong><ul id="70052c19-5198-4073-ad09-5902ffb40464" class="bulleted-list"><li style="list-style-type:disc">An identifier can consist of letters (A-Z or a-z), digits (0-9), underscores (_), and dollar signs ($).</li></ul><ul id="3b931712-9c1a-4388-b47b-9bd3e197d77c" class="bulleted-list"><li style="list-style-type:disc">The first character of an identifier cannot be a digit. It must be a letter, underscore, or dollar sign.</li></ul></li></ol><ol type="1" id="3b5836fe-0071-491e-a327-d7691c8ffc92" class="numbered-list" start="2"><li><strong>Java Keywords:</strong><ul id="0b596812-c8f0-4495-8356-beeabad028ab" class="bulleted-list"><li style="list-style-type:disc">Identifiers cannot be the same as Java keywords (reserved words), as they have predefined meanings in the language.</li></ul><ul id="63115c01-d4d4-4b65-b842-286b08e80dd6" class="bulleted-list"><li style="list-style-type:disc">For example, you cannot use &quot;int&quot;, &quot;class&quot;, &quot;if&quot;, &quot;for&quot;, etc., as identifiers.</li></ul></li></ol><ol type="1" id="05f6eeb0-8040-43a3-8cca-92dbb2b86a96" class="numbered-list" start="3"><li><strong>Length:</strong><ul id="dd112956-b694-41b9-a3e2-3ff03fa6d5b9" class="bulleted-list"><li style="list-style-type:disc">Identifiers can be of any length.</li></ul><ul id="88664948-0323-4ba6-95e8-4a0f1b78bbc9" class="bulleted-list"><li style="list-style-type:disc">However, Java is case-sensitive, so identifiers that differ only in their letter case are considered different. For example, &quot;age&quot;, &quot;Age&quot;, and &quot;AGE&quot; are different identifiers.</li></ul></li></ol><ol type="1" id="a0ac4038-c3b3-4093-a685-b35a4f15fa31" class="numbered-list" start="4"><li><strong>Conventions:</strong><ul id="21fe37cd-2f3c-4cb1-b7e9-79036ec957cc" class="bulleted-list"><li style="list-style-type:disc">Use descriptive names for identifiers that indicate their purpose or meaning.</li></ul><ul id="bf3ba04a-e27c-49b3-b49b-4ba67e451d0d" class="bulleted-list"><li style="list-style-type:disc">Start variable names with lowercase letters (e.g., <code>age</code>, <code>name</code>).</li></ul><ul id="a8afb097-4416-4fda-92dc-c7963591d6ad" class="bulleted-list"><li style="list-style-type:disc">For class names and interface names, start with an uppercase letter (e.g., <code>Person</code>, <code>Student</code>).</li></ul><ul id="d5a787d1-c9ea-4cb4-a311-734082c54487" class="bulleted-list"><li style="list-style-type:disc">Use camelCase for multi-word identifiers (e.g., <code>totalMarks</code>, <code>firstName</code>).</li></ul></li></ol><p id="aaf3f610-eca2-488f-bcb3-1b543aff8e95" class=""><strong>Examples of Valid Identifiers:</strong></p><pre id="3c759cb0-8e5f-4880-8164-9e89d56008f5" class="code code-wrap"><code>int age;
+double salary;
+String employeeName;
+final int MAX_VALUE;
+my_variable;
+isAlive;</code></pre><p id="630184d4-f8cf-481e-a76f-e7823b88f006" class=""><strong>Examples of Invalid Identifiers:</strong></p><pre id="50c16416-d86e-409d-acbf-391dea0436de" class="code code-wrap"><code>3people; // Cannot start with a digit
+class; // Reserved keyword cannot be used as an identifier
+for; // Reserved keyword cannot be used as an identifier
+total_marks$; // Contains an invalid character ($)</code></pre><p id="27f4f1aa-a88e-4588-8a46-25c630dbc1c4" class="">Following these rules for naming identifiers is essential for writing readable and maintainable Java code. By using meaningful names and adhering to naming conventions, your code becomes more understandable to other developers and yourself in the long run.</p><p id="35b921c7-f1ca-409a-a7cd-3cd72741078e" class="">Q29. <strong id="Q29ANS">Explain about:
+      1) Literals     2) Operators     3) Expressions
+</strong><em><strong>Answer:</strong></em></p><p id="f2fb7112-13b6-477e-b16c-bee1839720d5" class=""><strong>Literals:</strong>
+Literals are constant values that are directly used in the source code of a program. In other words, literals represent fixed values, such as numbers, characters, strings, or boolean values. They are used to assign specific data to variables or to specify values directly in expressions. In Java, literals are written in a specific syntax based on their data types.</p><p id="37968d54-19e7-4879-adc2-fa096fe4bcfd" class=""><strong>Examples of Literals:</strong></p><ul id="b4a42ce4-2023-4511-b033-da32d8000e96" class="bulleted-list"><li style="list-style-type:disc">Integer literals: <code>10</code>, <code>20</code>, <code>5</code></li></ul><ul id="a8aa3965-7ddf-4a50-8aaf-c737ee65c327" class="bulleted-list"><li style="list-style-type:disc">Floating-point literals: <code>3.14</code>, <code>2.5f</code>, <code>0.003</code></li></ul><ul id="853468ba-5f86-4bb6-bb98-b58f50c854e0" class="bulleted-list"><li style="list-style-type:disc">Character literals: <code>&#x27;A&#x27;</code>, <code>&#x27;b&#x27;</code>, <code>&#x27;7&#x27;</code></li></ul><ul id="612cdb10-4b00-4569-be09-dc98b957d913" class="bulleted-list"><li style="list-style-type:disc">String literals: <code>&quot;Hello&quot;</code>, <code>&quot;Java&quot;</code>, <code>&quot;123&quot;</code></li></ul><ul id="95f630fc-8c2e-4eeb-92e2-d0c4964ca21e" class="bulleted-list"><li style="list-style-type:disc">Boolean literals: <code>true</code>, <code>false</code></li></ul><p id="2402d857-6bfc-4c11-a038-dbdac6ee1e15" class=""><strong>Operators:</strong>
+Operators are symbols or special characters that perform operations on one or more operands (variables or values) to produce a result. Operators are used to perform various arithmetic, logical, and bitwise operations in Java. The result of an operation can be assigned to a variable, used in a conditional statement, or further used in other expressions.</p><p id="20549b5a-0e75-40b3-a483-5ec6af688952" class=""><strong>Types of Operators in Java:</strong></p><ol type="1" id="b768649a-893b-4229-8ea6-9af508d5014e" class="numbered-list" start="1"><li><strong>Arithmetic Operators:</strong> Perform basic arithmetic operations like addition, subtraction, multiplication, division, and modulus.</li></ol><ol type="1" id="ef96800a-ff6b-4936-b447-b4f4960820ba" class="numbered-list" start="2"><li><strong>Relational Operators:</strong> Compare two values and return a boolean result (true or false) based on the comparison.</li></ol><ol type="1" id="e05eb5ca-da14-4d18-8e81-95e3227936df" class="numbered-list" start="3"><li><strong>Logical Operators:</strong> Perform logical operations like AND, OR, and NOT.</li></ol><ol type="1" id="c5b4b776-b691-4c0a-9fec-fea44074fc7b" class="numbered-list" start="4"><li><strong>Bitwise Operators:</strong> Perform bitwise operations at the binary level on integral data types.</li></ol><ol type="1" id="f39d6552-8535-446a-b510-2681b6b00f00" class="numbered-list" start="5"><li><strong>Assignment Operators:</strong> Assign a value to a variable.</li></ol><ol type="1" id="f2b0fe38-e376-42eb-87ba-56d6b79df506" class="numbered-list" start="6"><li><strong>Conditional (Ternary) Operator:</strong> A shorthand way of writing if-else statements.</li></ol><p id="466aad54-eb32-4bc3-8773-0bc164a45ed7" class=""><strong>Examples of Operators:</strong></p><ul id="a9775815-b2e9-4d47-91a8-73ea4df2784e" class="bulleted-list"><li style="list-style-type:disc">Arithmetic operators: <code>+ * + / % -</code></li></ul><ul id="7a9a8a39-79f3-4241-bb49-a02607fb0392" class="bulleted-list"><li style="list-style-type:disc">Relational operators: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li></ul><ul id="30235f26-3909-4856-bc07-d446f4dd5a31" class="bulleted-list"><li style="list-style-type:disc">Logical operators: <code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT)</li></ul><ul id="acd990b2-41d3-40d9-9758-aa2e1a54f7a8" class="bulleted-list"><li style="list-style-type:disc">Bitwise operators: <code>&amp;</code> (AND), <code>|</code> (OR), <code>^</code> (XOR), <code>~</code> (NOT)</li></ul><ul id="d25a5f9c-b168-4d74-9a81-09c7cd856129" class="bulleted-list"><li style="list-style-type:disc">Assignment operators: <code>=</code>, <code>+=</code>, <code>=</code>, <code>=</code>, <code>/=</code>, <code>%=</code>, etc.</li></ul><ul id="fe08835d-8d7e-4df3-9ed4-b7a109da0bfe" class="bulleted-list"><li style="list-style-type:disc">Conditional (Ternary) operator: <code>condition ? expression1 : expression2</code></li></ul><p id="6457bca1-02b7-4e76-882d-a623bb62df20" class=""><strong>Expressions:</strong>
+An expression is a combination of variables, literals, operators, and method calls that produces a single value. Expressions can be as simple as a single variable or literal or as complex as a combination of multiple variables and operators. Expressions are evaluated to produce a result.</p><p id="4c8f9500-73d8-4082-addc-eb6f2a5c2334" class=""><strong>Examples of Expressions:</strong></p><ol type="1" id="392731a0-d02e-4406-a7ad-5ea7bd715f87" class="numbered-list" start="1"><li><code>int result = 2 + 3;</code> (Expression: <code>2 + 3</code>)</li></ol><ol type="1" id="b8ac5823-7e6a-477d-a0b1-7b5032290a65" class="numbered-list" start="2"><li><code>double average = (x + y + z) / 3.0;</code> (Expression: <code>(x + y + z) / 3.0</code>)</li></ol><ol type="1" id="dbf556ec-2e0b-4564-910a-4a9513262a60" class="numbered-list" start="3"><li><code>boolean isPositive = (num &gt; 0) &amp;&amp; (num &lt; 100);</code> (Expression: <code>(num &gt; 0) &amp;&amp; (num &lt; 100)</code>)</li></ol><p id="dc0b137e-c9bf-4958-a25b-c1dee2e90772" class="">In summary, literals represent constant values, operators perform operations on operands, and expressions are combinations of literals, variables, and operators that produce a single value. Together, they form the building blocks of Java programs, enabling data manipulation and control flow in a variety of ways.</p><p id="2be6833a-802e-4fd7-83d7-2b06de91c598" class="">Q30. <strong id="Q30ANS">Why is Java called an OOP language?
+</strong><em><strong>Answer:  </strong></em>Java is called an Object-Oriented Programming (OOP) language because it follows the principles of object-oriented programming and provides features that support object-oriented concepts. The key features that make Java an OOP language are:</p><ol type="1" id="0ae256b6-8d3f-4094-9beb-9d40d25069c9" class="numbered-list" start="1"><li><strong>Objects and Classes:</strong>
+Java allows you to define classes, which serve as blueprints for creating objects. Objects are instances of classes that represent real-world entities or concepts. The class encapsulates data (attributes) and behavior (methods) related to the object it represents.</li></ol><ol type="1" id="6547f345-b580-452f-8643-5d8d63c184f7" class="numbered-list" start="2"><li><strong>Encapsulation:</strong>
+Java supports data hiding and encapsulation, which means the data and methods of an object are hidden from the outside world. Access to the data is controlled through methods, ensuring that the internal representation of an object is not directly accessible, improving data security and maintainability.</li></ol><ol type="1" id="71ca4ae3-e2a1-4bd5-8651-a3f847344323" class="numbered-list" start="3"><li><strong>Inheritance:</strong>
+Java supports inheritance, where a class can inherit properties and behavior from another class (superclass). This allows the creation of hierarchical relationships between classes and facilitates code reuse. Inheritance promotes the &quot;is-a&quot; relationship, enabling you to model more complex relationships between objects.</li></ol><ol type="1" id="d0f2471e-5107-4900-8697-bc4f20c80a72" class="numbered-list" start="4"><li><strong>Polymorphism:</strong>
+Polymorphism in Java allows objects of different classes to be treated as objects of a common superclass. This enables flexibility and extensibility in the code. It allows multiple classes to implement the same method signature, and the appropriate method is invoked dynamically at runtime based on the actual object&#x27;s type.</li></ol><ol type="1" id="37bdaf16-9829-4ec2-99d6-a7fde075b27b" class="numbered-list" start="5"><li><strong>Abstraction:</strong>
+Java supports abstraction, which allows you to define the essential characteristics of an object while hiding the implementation details. Abstraction allows you to focus on what an object does rather than how it does it. Abstract classes and interfaces are used to achieve abstraction in Java.</li></ol><p id="7f81af18-0b24-4b29-89f6-f6435ddf7bcc" class="">By leveraging these OOP concepts, Java enables developers to design and build modular, reusable, and maintainable code. OOP promotes code organization, improves software design, and makes it easier to model real-world entities in a programming environment. The use of objects, classes, inheritance, polymorphism, and encapsulation in Java makes it a true object-oriented programming language.</p><p id="7e545f88-1f26-4bd0-af03-8d9359696e3c" class="">    </p><p id="6c79bf00-e68d-47e4-82e7-17ae144fbbf2" class="">
+</p></div></article></body></html>
